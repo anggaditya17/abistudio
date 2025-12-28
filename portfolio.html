@@ -16,9 +16,16 @@
             }
         }
     </script>
-    <style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap'); body { font-family: 'Plus Jakarta Sans', sans-serif; } .pin-card:hover .pin-overlay { opacity: 1; }</style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap'); 
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .pin-card:hover .pin-overlay { opacity: 1; }
+        /* Animasi smooth saat loading gambar */
+        img { transition: transform 0.5s ease; }
+        .pin-card:hover img { transform: scale(1.05); }
+    </style>
 </head>
-<body class="bg-white">
+<body class="bg-gray-50 flex flex-col min-h-screen">
 
     <nav class="fixed w-full top-0 z-[50] bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
@@ -37,38 +44,120 @@
     <header class="pt-40 pb-20 bg-abi-dark text-white text-center px-6 relative overflow-hidden">
         <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2000')] bg-cover bg-center"></div>
         <div class="relative z-10">
-            <p class="text-xs font-bold uppercase tracking-[0.4em] text-abi-teal mb-4">Our Works</p>
+            <p class="text-xs font-bold uppercase tracking-[0.4em] text-abi-teal mb-4">Our Masterpieces</p>
             <h1 class="text-4xl md:text-6xl font-light">Karya & Inspirasi</h1>
         </div>
     </header>
 
     <section class="py-20 px-6">
-        <div class="container mx-auto columns-1 md:columns-3 gap-6 space-y-6">
-            <div class="break-inside-avoid relative group pin-card rounded-2xl overflow-hidden cursor-pointer mb-6">
-                <img src="https://images.unsplash.com/photo-1600596542815-274ef3c53b94?q=80&w=800" class="w-full object-cover">
-                <div class="pin-overlay absolute inset-0 bg-black/60 opacity-0 transition duration-500 flex flex-col justify-end p-8">
-                    <p class="text-white font-bold">Modern Tropical Facade</p>
-                    <p class="text-xs text-gray-300">Residential</p>
+        <div class="container mx-auto">
+            <div class="flex items-end justify-between mb-10 border-b border-gray-200 pb-4">
+                <div>
+                    <h3 class="text-2xl font-bold text-abi-dark">Featured Projects</h3>
+                    <p class="text-sm text-gray-500 mt-1">Hasil karya orisinil tim ABI STUDIO.</p>
                 </div>
+                <div class="hidden md:block text-xs font-bold uppercase tracking-widest text-abi-teal">Real Works</div>
             </div>
-            <div class="break-inside-avoid relative group pin-card rounded-2xl overflow-hidden cursor-pointer mb-6">
-                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800" class="w-full object-cover">
-                <div class="pin-overlay absolute inset-0 bg-black/60 opacity-0 transition duration-500 flex flex-col justify-end p-8">
-                    <p class="text-white font-bold">Steel Structure Warehouse</p>
-                    <p class="text-xs text-gray-300">Industrial</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <div class="group relative h-[400px] rounded-2xl overflow-hidden shadow-lg">
+                    <img src="proyek1.jpg" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-8">
+                        <span class="text-abi-teal text-[10px] font-bold uppercase tracking-widest mb-2">Residential</span>
+                        <h4 class="text-white text-2xl font-bold">Private House Project</h4>
+                        <p class="text-gray-300 text-xs mt-2">Design & Build by ABI Studio</p>
+                    </div>
                 </div>
-            </div>
-            <div class="break-inside-avoid relative group pin-card rounded-2xl overflow-hidden cursor-pointer mb-6">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800" class="w-full object-cover">
-                <div class="pin-overlay absolute inset-0 bg-black/60 opacity-0 transition duration-500 flex flex-col justify-end p-8">
-                    <p class="text-white font-bold">Executive Meeting Room</p>
-                    <p class="text-xs text-gray-300">Office</p>
+
+                <div class="group relative h-[400px] rounded-2xl overflow-hidden shadow-lg">
+                    <img src="proyek2.jpg" onerror="this.src='https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-8">
+                        <span class="text-abi-teal text-[10px] font-bold uppercase tracking-widest mb-2">Commercial</span>
+                        <h4 class="text-white text-2xl font-bold">Office / Ruko Project</h4>
+                        <p class="text-gray-300 text-xs mt-2">Structure & Interior by ABI Studio</p>
+                    </div>
                 </div>
+
+                <div class="group relative h-[300px] rounded-2xl overflow-hidden shadow-lg">
+                    <img src="proyek3.jpg" onerror="this.src='https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-8">
+                        <span class="text-abi-teal text-[10px] font-bold uppercase tracking-widest mb-2">Interior</span>
+                        <h4 class="text-white text-xl font-bold">Interior Detail</h4>
+                    </div>
+                </div>
+
+                <div class="group relative h-[300px] rounded-2xl overflow-hidden shadow-lg">
+                    <img src="proyek4.jpg" onerror="this.src='https://images.unsplash.com/photo-1616486338812-3aeee7e3652e?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-8">
+                        <span class="text-abi-teal text-[10px] font-bold uppercase tracking-widest mb-2">Architecture</span>
+                        <h4 class="text-white text-xl font-bold">Facade Design</h4>
+                    </div>
+                </div>
+
             </div>
-            </div>
+        </div>
     </section>
 
-    <footer class="bg-abi-dark text-white py-10 text-center text-xs">
+    <section class="py-10 px-6 bg-white">
+        <div class="container mx-auto">
+            <div class="flex items-end justify-between mb-10 border-b border-gray-100 pb-4">
+                <div>
+                    <h3 class="text-2xl font-bold text-abi-dark">Design Inspiration</h3>
+                    <p class="text-sm text-gray-500 mt-1">Referensi gaya arsitektur & interior modern.</p>
+                </div>
+                <div class="hidden md:block text-xs font-bold uppercase tracking-widest text-gray-300">Gallery</div>
+            </div>
+
+            <div class="columns-1 md:columns-3 gap-6 space-y-6">
+                
+                <div class="break-inside-avoid relative group pin-card rounded-2xl overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" class="w-full object-cover">
+                    <div class="pin-overlay absolute inset-0 bg-black/50 opacity-0 transition duration-300 flex items-center justify-center">
+                        <p class="text-white font-bold text-sm tracking-widest uppercase">Modern Facade</p>
+                    </div>
+                </div>
+
+                <div class="break-inside-avoid relative group pin-card rounded-2xl overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=600&q=80" class="w-full object-cover">
+                    <div class="pin-overlay absolute inset-0 bg-black/50 opacity-0 transition duration-300 flex items-center justify-center">
+                        <p class="text-white font-bold text-sm tracking-widest uppercase">Minimalist Room</p>
+                    </div>
+                </div>
+
+                <div class="break-inside-avoid relative group pin-card rounded-2xl overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" class="w-full object-cover">
+                    <div class="pin-overlay absolute inset-0 bg-black/50 opacity-0 transition duration-300 flex items-center justify-center">
+                        <p class="text-white font-bold text-sm tracking-widest uppercase">High Rise Building</p>
+                    </div>
+                </div>
+
+                <div class="break-inside-avoid relative group pin-card rounded-2xl overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" class="w-full object-cover">
+                    <div class="pin-overlay absolute inset-0 bg-black/50 opacity-0 transition duration-300 flex items-center justify-center">
+                        <p class="text-white font-bold text-sm tracking-widest uppercase">Dining Area</p>
+                    </div>
+                </div>
+
+                <div class="break-inside-avoid relative group pin-card rounded-2xl overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=600&q=80" class="w-full object-cover">
+                    <div class="pin-overlay absolute inset-0 bg-black/50 opacity-0 transition duration-300 flex items-center justify-center">
+                        <p class="text-white font-bold text-sm tracking-widest uppercase">Living Room</p>
+                    </div>
+                </div>
+
+                <div class="break-inside-avoid relative group pin-card rounded-2xl overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=600&q=80" class="w-full object-cover">
+                    <div class="pin-overlay absolute inset-0 bg-black/50 opacity-0 transition duration-300 flex items-center justify-center">
+                        <p class="text-white font-bold text-sm tracking-widest uppercase">Office Space</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-abi-dark text-white py-10 text-center text-xs mt-auto">
         <p class="opacity-40 uppercase tracking-[0.2em]">&copy; 2025 ABI STUDIO. All Rights Reserved.</p>
     </footer>
 
