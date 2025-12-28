@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paket Harga - ABI STUDIO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { abi: { teal: '#4A6D6D', dark: '#1a1a1a' } },
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap'); body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+</head>
+<body class="bg-gray-50">
+
+    <nav class="fixed w-full top-0 z-[50] bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center py-2"><img src="logo.png" class="h-14 w-auto object-contain"></a>
+            <div class="hidden md:flex space-x-8 text-[11px] font-bold uppercase tracking-[0.2em] text-gray-700 items-center">
+                <a href="index.html" class="hover:text-abi-teal transition pb-1">Home</a>
+                <a href="about.html" class="hover:text-abi-teal transition pb-1">About</a>
+                <a href="services.html" class="hover:text-abi-teal transition pb-1">Layanan</a>
+                <a href="paket.html" class="text-abi-teal border-b-2 border-abi-teal pb-1">Paket</a>
+                <a href="portfolio.html" class="hover:text-abi-teal transition pb-1">Portfolio</a>
+                <a href="https://wa.me/6285157577465" target="_blank" class="bg-abi-teal text-white px-6 py-2.5 rounded-full hover:bg-abi-dark transition shadow-lg">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-40 pb-20 bg-abi-dark text-white text-center px-6 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000')] bg-cover bg-center"></div>
+        <div class="relative z-10">
+            <p class="text-xs font-bold uppercase tracking-[0.4em] text-abi-teal mb-4">Pricing Plans</p>
+            <h1 class="text-4xl md:text-6xl font-light">Investasi Perencanaan</h1>
+            <p class="mt-4 text-gray-400 font-light max-w-2xl mx-auto">Pilih paket yang sesuai dengan kebutuhan proyek Anda. Transparan, terukur, dan profesional.</p>
+        </div>
+    </header>
+
+    <section class="py-20 px-6">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div onclick="window.open('https://wa.me/6285157577465?text=Halo%20saya%20tertarik%20Paket%20Basic', '_blank')" class="bg-white p-8 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-abi-teal rounded-2xl">
+                <span class="text-xs font-bold text-gray-300">01</span>
+                <h4 class="text-xl font-bold mt-4 mb-2">Basic Plan</h4>
+                <p class="text-3xl font-light text-abi-teal mb-6">7rb<span class="text-xs text-gray-400">/m²</span></p>
+                <ul class="text-[11px] text-gray-600 space-y-3 mb-8">
+                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Denah 2D & 3D</li>
+                    <li><i class="fas fa-check text-abi-teal mr-2"></i> 3D Exterior Render</li>
+                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Revisi Minor 3x</li>
+                </ul>
+                <button class="w-full py-3 border border-gray-200 text-[10px] font-bold uppercase tracking-widest hover:bg-abi-teal hover:text-white transition rounded-full">Pilih Paket</button>
+            </div>
+            <div onclick="window.open('https://wa.me/6285157577465?text=Halo%20saya%20tertarik%20Paket%20Standard', '_blank')" class="bg-abi-teal text-white p-8 shadow-xl transition cursor-pointer transform md:-translate-y-4 relative rounded-2xl">
+                <div class="absolute top-0 right-0 p-4"><span class="bg-white text-abi-teal text-[9px] px-2 py-1 font-bold rounded">BEST SELLER</span></div>
+                <span class="text-xs font-bold text-white/50">02</span>
+                <h4 class="text-xl font-bold mt-4 mb-2">Standard</h4>
+                <p class="text-3xl font-light mb-6">22rb<span class="text-xs text-white/50">/m²</span></p>
+                <ul class="text-[11px] text-white/80 space-y-3 mb-8">
+                    <li><i class="fas fa-check text-white mr-2"></i> Denah & Tampak Lengkap</li>
+                    <li><i class="fas fa-check text-white mr-2"></i> Potongan & Pola Lantai</li>
+                    <li><i class="fas fa-check text-white mr-2"></i> 3D Modeling Full</li>
+                </ul>
+                <button class="w-full py-3 bg-white text-abi-teal text-[10px] font-bold uppercase tracking-widest hover:bg-abi-dark hover:text-white transition rounded-full">Pilih Paket</button>
+            </div>
+            <div onclick="window.open('https://wa.me/6285157577465?text=Halo%20saya%20tertarik%20Paket%20Advance', '_blank')" class="bg-white p-8 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-abi-teal rounded-2xl">
+                <span class="text-xs font-bold text-gray-300">03</span>
+                <h4 class="text-xl font-bold mt-4 mb-2">Advance</h4>
+                <p class="text-3xl font-light text-abi-teal mb-6">33rb<span class="text-xs text-gray-400">/m²</span></p>
+                <ul class="text-[11px] text-gray-600 space-y-3 mb-8">
+                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Struktur & MEP Lengkap</li>
+                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Detail Kusen & Sanitasi</li>
+                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Paket Standard Include</li>
+                </ul>
+                <button class="w-full py-3 border border-gray-200 text-[10px] font-bold uppercase tracking-widest hover:bg-abi-teal hover:text-white transition rounded-full">Pilih Paket</button>
+            </div>
+            <div onclick="window.open('https://wa.me/6285157577465?text=Halo%20saya%20tertarik%20Paket%20RAB', '_blank')" class="bg-white p-8 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-gray-800 rounded-2xl">
+                <span class="text-xs font-bold text-gray-300">04</span>
+                <h4 class="text-xl font-bold mt-4 mb-2">RAB Only</h4>
+                <p class="text-3xl font-light text-gray-800 mb-6">10rb<span class="text-xs text-gray-400">/m²</span></p>
+                <ul class="text-[11px] text-gray-600 space-y-3 mb-8">
+                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Analisis Harga Satuan</li>
+                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Kebutuhan Material</li>
+                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Format SPK</li>
+                </ul>
+                <button class="w-full py-3 border border-gray-200 text-[10px] font-bold uppercase tracking-widest hover:bg-abi-dark hover:text-white transition rounded-full">Pilih Paket</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-abi-dark text-white py-10 text-center text-xs">
+        <p class="opacity-40 uppercase tracking-[0.2em]">&copy; 2025 ABI STUDIO. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
