@@ -6,6 +6,10 @@
     <title>Paket Harga - ABI STUDIO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -19,6 +23,22 @@
             }
         }
     </script>
+    
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyC9JW1Rc3VFnJRYofHiorqDN4MWHjBrVi0",
+        authDomain: "abistudio-db.firebaseapp.com",
+        projectId: "abistudio-db",
+        storageBucket: "abistudio-db.firebasestorage.app",
+        messagingSenderId: "249751405902",
+        appId: "1:249751405902:web:6061648be8e6a51a69ca1f"
+      };
+
+      // Inisialisasi Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore(); // Siap menyimpan data!
+    </script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; }
@@ -63,7 +83,7 @@
                 <a href="services.html" class="hover:text-abi-teal py-2">Layanan</a>
                 <a href="paket.html" class="hover:text-abi-teal py-2">Paket</a>
                 <a href="portfolio.html" class="hover:text-abi-teal py-2">Portfolio</a>
-                <a href="blog.html" class="hover:text-abi-teal transition pb-1">Blog</a>
+                <a href="blog.html" class="hover:text-abi-teal py-2">Blog</a>
                 <a href="https://wa.me/6285157577465" target="_blank" class="bg-abi-teal text-white py-3 rounded-full mt-2">Contact Us</a>
             </div>
         </div>
@@ -152,7 +172,7 @@
     </section>
 
     <footer class="bg-abi-dark text-white py-12 text-center text-sm mt-auto">
-        <p class="opacity-50 uppercase tracking-[0.2em]">&copy; 2025 ABI STUDIO. All Rights Reserved.</p>
+        <p class="opacity-50 uppercase tracking-[0.2em]">© 2025 ABI STUDIO. All Rights Reserved.</p>
     </footer>
 
     <div id="orderModal" class="modal-overlay">
@@ -202,59 +222,25 @@
 
     <script>
     // --- 1. SCRIPT DETEKSI LEADS DARI SERVICES.HTML ---
-    // Ini adalah otak yang menghubungkan Services -> Paket secara otomatis
-    
     window.onload = function() {
         updateTickerDisplay(); // Jalankan running text
-        
-        // Baca URL (apakah ada ?service=...)
         const urlParams = new URLSearchParams(window.location.search);
         const serviceType = urlParams.get('service');
-        
         if(serviceType) {
-            let customTitle = "Konsultasi Layanan";
-            let customImg = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"; // Default Image
-            let autoSelectType = "Rumah Tinggal";
-
-            // Logika pemilihan judul & gambar berdasarkan link dari services.html
-            if(serviceType === 'arsitek') {
-                customTitle = "Konsultasi Arsitek";
-                customImg = "https://images.unsplash.com/photo-1512917774080-9991f1c4c750";
-                autoSelectType = "Rumah Tinggal";
-            } else if(serviceType === 'interior') {
-                customTitle = "Konsultasi Interior";
-                customImg = "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0";
-                autoSelectType = "Interior/Kitchen Set";
-            } else if(serviceType === 'kanopi') {
-                customTitle = "Jasa Kanopi & Eksterior";
-                customImg = "https://images.unsplash.com/photo-1497366216548-37526070297c";
-                autoSelectType = "Kanopi/Eksterior";
-            } else if(serviceType === 'pool') {
-                customTitle = "Pembuatan Kolam Renang";
-                customImg = "https://images.unsplash.com/photo-1572331165267-854da2b00dc1";
-                autoSelectType = "Kolam Renang";
-            } else if(serviceType === 'renovasi') {
-                customTitle = "Jasa Renovasi Sipil";
-                customImg = "https://images.unsplash.com/photo-1503387762-592deb58ef4e";
-                autoSelectType = "Renovasi";
-            }
-
-            // Buka Modal Secara Otomatis
+            let customTitle = "Konsultasi Layanan", customImg = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c", autoSelectType = "Rumah Tinggal";
+            if(serviceType === 'arsitek') { customTitle = "Konsultasi Arsitek"; customImg = "https://images.unsplash.com/photo-1512917774080-9991f1c4c750"; autoSelectType = "Rumah Tinggal"; } 
+            else if(serviceType === 'interior') { customTitle = "Konsultasi Interior"; customImg = "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0"; autoSelectType = "Interior/Kitchen Set"; } 
+            else if(serviceType === 'kanopi') { customTitle = "Jasa Kanopi & Eksterior"; customImg = "https://images.unsplash.com/photo-1497366216548-37526070297c"; autoSelectType = "Kanopi/Eksterior"; } 
+            else if(serviceType === 'pool') { customTitle = "Pembuatan Kolam Renang"; customImg = "https://images.unsplash.com/photo-1572331165267-854da2b00dc1"; autoSelectType = "Kolam Renang"; } 
+            else if(serviceType === 'renovasi') { customTitle = "Jasa Renovasi Sipil"; customImg = "https://images.unsplash.com/photo-1503387762-592deb58ef4e"; autoSelectType = "Renovasi"; }
             openOrder(customTitle, customImg);
-            
-            // Pilih Dropdown Jenis Bangunan secara otomatis
-            setTimeout(() => {
-                document.getElementById('type').value = autoSelectType;
-            }, 100);
+            setTimeout(() => { document.getElementById('type').value = autoSelectType; }, 100);
         }
     }
 
     // --- 2. SCRIPT FAKE DATA & RUNNING TEXT ---
     const fakeBuyers = ["MUHAMMAD FAIZAL", "SITI AMINAH", "CV. BERKAH JAYA", "RUDI HARTONO", "ANDI PRATAMA", "DEWI SARTIKA", "PT. BANGUN INDAH"];
-    function maskName(name) {
-        if (name.length <= 4) return name; 
-        return `${name.slice(0, 3)}********${name.slice(-3)}`;
-    }
+    function maskName(name) { if (name.length <= 4) return name; return `${name.slice(0, 3)}********${name.slice(-3)}`; }
     function updateTickerDisplay() {
         const container = document.getElementById('tickerContent');
         let htmlContent = "";
@@ -266,7 +252,7 @@
         container.innerHTML = htmlContent + htmlContent;
     }
 
-    // --- 3. LOGIKA MODAL STANDAR ---
+    // --- 3. LOGIKA UTAMA (FIREBASE + WA) ---
     function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
     
     let selectedPkg = "";
@@ -281,7 +267,6 @@
     function closeOrder() { 
         document.getElementById('orderModal').style.display = 'none'; 
         document.body.style.overflow = 'auto'; 
-        // Bersihkan URL parameter agar kalau di refresh tidak pop up terus
         window.history.pushState({}, document.title, window.location.pathname);
     }
     
@@ -292,27 +277,57 @@
         const location = document.getElementById('location').value; 
         const date = document.getElementById('date').value;
         
-        if(!name || !area || !location || !date) { 
-            alert("Mohon lengkapi data proyek (termasuk Nama Anda)."); 
-            return; 
-        }
+        if(!name || !area || !location || !date) { alert("Mohon lengkapi data proyek (termasuk Nama Anda)."); return; }
         
-        fakeBuyers.unshift(name); if(fakeBuyers.length > 15) fakeBuyers.pop(); updateTickerDisplay();
+        // 1. UPDATE UI (Loading)
+        const btn = document.querySelector('button[onclick="sendWhatsApp()"]');
+        const originalText = btn.innerText;
+        btn.innerText = "Menyimpan Data...";
+        btn.disabled = true;
 
-        const msg = `Halo ABI Studio,%0A` + 
-                    `Saya tertarik dengan layanan:%0A%0A` + 
-                    `📝 *${selectedPkg}*%0A` + 
-                    `--------------------------------%0A` +
-                    `👤 Nama Klien : ${name}%0A` + 
-                    `📐 Luas/Area : ${area} m²%0A` + 
-                    `🏡 Kategori : ${type}%0A` + 
-                    `📍 Lokasi : ${location}%0A` + 
-                    `📅 Rencana : ${date}%0A` + 
-                    `--------------------------------%0A` +
-                    `Mohon info estimasi biaya. Terima kasih.`;
-        
-        window.open(`https://wa.me/6285157577465?text=${msg}`, '_blank'); 
-        closeOrder();
+        // 2. SIMPAN KE FIREBASE
+        db.collection("leads").add({
+            nama_klien: name,
+            paket_dipilih: selectedPkg,
+            luas_bangunan: area,
+            jenis_bangunan: type,
+            lokasi: location,
+            rencana_bangun: date,
+            waktu_input: new Date()
+        })
+        .then((docRef) => {
+            console.log("Data tersimpan di Firebase ID: ", docRef.id);
+            
+            // 3. UPDATE RUNNING TEXT & BUKA WA
+            fakeBuyers.unshift(name); if(fakeBuyers.length > 15) fakeBuyers.pop(); updateTickerDisplay();
+
+            const msg = `Halo ABI Studio,%0A` + 
+                        `Saya tertarik dengan layanan:%0A%0A` + 
+                        `📝 *${selectedPkg}*%0A` + 
+                        `--------------------------------%0A` +
+                        `👤 Nama Klien : ${name}%0A` + 
+                        `📐 Luas/Area : ${area} m²%0A` + 
+                        `🏡 Kategori : ${type}%0A` + 
+                        `📍 Lokasi : ${location}%0A` + 
+                        `📅 Rencana : ${date}%0A` + 
+                        `--------------------------------%0A` +
+                        `Mohon info estimasi biaya. Terima kasih.`;
+            
+            window.open(`https://wa.me/6285157577465?text=${msg}`, '_blank'); 
+            
+            btn.innerText = originalText;
+            btn.disabled = false;
+            closeOrder();
+        })
+        .catch((error) => {
+            console.error("Gagal simpan database: ", error);
+            // Fallback: Tetap buka WA walaupun database error (koneksi buruk dll)
+            const msg = `Halo ABI Studio (Manual Mode),%0A` + `Saya tertarik dengan layanan: ${selectedPkg} (Nama: ${name})`;
+            window.open(`https://wa.me/6285157577465?text=${msg}`, '_blank');
+            btn.innerText = originalText;
+            btn.disabled = false;
+            closeOrder();
+        });
     }
     
     window.onclick = function(e) { if(e.target == document.getElementById('orderModal')) closeOrder(); }
