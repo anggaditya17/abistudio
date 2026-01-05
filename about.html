@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - ABI STUDIO</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { abi: { teal: '#4A6D6D', dark: '#1a1a1a' } },
+                    colors: { abi: { teal: '#4A6D6D', dark: '#1a1a1a', light: '#f8f9fa' } },
                     fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] }
                 }
             }
         }
     </script>
-    <style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap'); body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap'); body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen">
 
@@ -29,7 +30,7 @@
 
             <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-[0.15em] text-gray-700 items-center">
                 <a href="index.html" class="hover:text-abi-teal transition pb-1">Home</a>
-                <a href="about.html" class="hover:text-abi-teal transition pb-1">About</a>
+                <a href="about.html" class="hover:text-abi-teal transition pb-1 text-abi-teal">About</a>
                 <a href="services.html" class="hover:text-abi-teal transition pb-1">Layanan</a>
                 <a href="paket.html" class="hover:text-abi-teal transition pb-1">Paket</a>
                 <a href="portfolio.html" class="hover:text-abi-teal transition pb-1">Portfolio</a>
@@ -54,7 +55,7 @@
         </div>
     </nav>
 
-    <header class="pt-40 pb-20 bg-abi-dark text-white text-center px-6 relative overflow-hidden">
+    <header class="pt-48 pb-24 bg-abi-dark text-white text-center px-6 relative overflow-hidden">
         <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000')] bg-cover bg-center"></div>
         <div class="relative z-10">
             <p class="text-xs font-bold uppercase tracking-[0.4em] text-abi-teal mb-4">Who We Are</p>
@@ -62,78 +63,76 @@
         </div>
     </header>
 
-    <section class="py-20 px-6">
-        <div class="container mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <div>
-                <h3 class="text-3xl font-bold mb-6 text-abi-dark">Tentang ABI STUDIO</h3>
-                <p class="text-gray-600 leading-relaxed mb-6 text-justify">
-                    ABI STUDIO adalah konsultan perencanaan arsitektur dan konstruksi yang berbasis di Tangerang. Kami percaya bahwa setiap garis yang kami gambar adalah awal dari sebuah kehidupan baru bagi klien kami.
-                </p>
-                <p class="text-gray-600 leading-relaxed mb-6 text-justify">
-                    Dengan memadukan estetika arsitektur dan presisi teknik sipil, kami menghadirkan solusi bangunan yang tidak hanya indah dipandang, tetapi juga kokoh, fungsional, dan efisien secara biaya.
-                </p>
-                
-                <div class="grid grid-cols-2 gap-6 mt-8">
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                        <h4 class="text-abi-teal font-bold text-xl mb-2">Visi</h4>
-                        <p class="text-xs text-gray-500">Menjadi partner konstruksi terpercaya dengan standar kualitas dan inovasi tertinggi.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                        <h4 class="text-abi-teal font-bold text-xl mb-2">Misi</h4>
-                        <p class="text-xs text-gray-500">Memberikan layanan terintegrasi dari desain hingga konstruksi yang memuaskan klien.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="relative">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800" class="rounded-2xl shadow-2xl">
-                <div class="absolute -bottom-6 -left-6 bg-abi-teal text-white p-8 rounded-tr-3xl rounded-bl-3xl hidden md:block">
-                    <p class="text-4xl font-bold">100+</p>
-                    <p class="text-xs uppercase tracking-widest mt-1">Projects Done</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 px-6 bg-white border-t border-gray-100">
-        <div class="container mx-auto text-center mb-16">
-            <h3 class="text-2xl font-bold">Our Leadership</h3>
-            <p class="text-gray-500 text-sm mt-2">Tim ahli di balik setiap proyek sukses.</p>
-        </div>
-        <div class="container mx-auto grid md:grid-cols-2 gap-8 max-w-4xl">
-             <div class="flex items-center space-x-6 bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition">
-                <div class="w-24 h-24 rounded-full bg-gray-300 overflow-hidden flex-shrink-0 border-4 border-white shadow">
-                    <img src="rama.jpg" class="w-full h-full object-cover">
-                </div>
-                <div class="text-left">
-                    <h5 class="text-xl font-bold text-abi-dark">Ir. Rama Ganeza, ST., MPr.</h5>
-                    <p class="text-[10px] uppercase tracking-widest text-abi-teal font-bold mb-2">Founder & CEO</p>
-                    <p class="text-xs text-gray-500">Ahli konstruksi dan manajemen proyek dengan pengalaman teknis mendalam.</p>
-                </div>
-            </div>
-
-            <div class="flex items-center space-x-6 bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition">
-                <div class="w-24 h-24 rounded-full bg-gray-300 overflow-hidden flex-shrink-0 border-4 border-white shadow">
-                    <img src="angga.jpg" class="w-full h-full object-cover">
-                </div>
-                <div class="text-left">
-                    <h5 class="text-xl font-bold text-abi-dark">Angga Aditya Pratama, SE.</h5>
-                    <p class="text-[10px] uppercase tracking-widest text-abi-teal font-bold mb-2">Co-Founder & Head of Marketing</p>
-                    <p class="text-xs text-gray-500">Spesialis strategi bisnis dan hubungan klien untuk kepuasan pelanggan.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-     Solusi interior yang inovatif, elegan, dan personal. Kami membantu perencanaan ruang, furnitur, hingga pencahayaan.
+    <section class="py-24 px-6">
+        <div class="container mx-auto grid md:grid-cols-2 gap-16 items-start">
+            <div class="space-y-8">
+                <div>
+                    <h3 class="text-3xl font-bold mb-6 text-abi-dark border-l-4 border-abi-teal pl-4">Tentang ABI STUDIO</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6 text-justify text-lg font-light">
+                        ABI STUDIO adalah konsultan perencanaan arsitektur dan konstruksi yang berbasis di Tangerang. Kami percaya bahwa setiap garis yang kami gambar adalah awal dari sebuah kehidupan baru bagi klien kami.
                     </p>
-                    <ul class="text-sm space-y-3 text-gray-300">
-                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Furniture & Material Selection</li>
-                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Custom Furniture Design</li>
-                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Interior Renovation</li>
-                    </ul>
+                    <p class="text-gray-600 leading-relaxed text-justify text-lg font-light">
+                        Dengan memadukan estetika arsitektur dan presisi teknik sipil, kami menghadirkan solusi bangunan yang tidak hanya indah dipandang, tetapi juga kokoh, fungsional, dan efisien secara biaya.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:border-abi-teal transition duration-300">
+                        <i class="fas fa-eye text-abi-teal text-2xl mb-4"></i>
+                        <h4 class="text-abi-dark font-bold text-xl mb-2">Visi</h4>
+                        <p class="text-sm text-gray-500 leading-relaxed">Menjadi partner konstruksi terpercaya dengan standar kualitas dan inovasi tertinggi.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:border-abi-teal transition duration-300">
+                        <i class="fas fa-bullseye text-abi-teal text-2xl mb-4"></i>
+                        <h4 class="text-abi-dark font-bold text-xl mb-2">Misi</h4>
+                        <p class="text-sm text-gray-500 leading-relaxed">Memberikan layanan terintegrasi dari desain hingga konstruksi yang memuaskan klien.</p>
+                    </div>
                 </div>
             </div>
-            <div class="text-center mt-16">
-                <a href="services.html" class="inline-block border border-abi-teal text-abi-teal px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-abi-teal hover:text-white transition">Lihat Selengkapnya</a>
+
+            <div class="relative mt-8 md:mt-0">
+                <div class="rounded-3xl overflow-hidden shadow-2xl relative z-10">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800" class="w-full h-auto object-cover transform hover:scale-105 transition duration-700">
+                </div>
+                <div class="absolute -bottom-10 -left-10 w-full h-full border-2 border-abi-teal/20 rounded-3xl -z-0 hidden md:block"></div>
+                <div class="absolute -bottom-6 -right-6 bg-abi-teal text-white p-8 rounded-tl-3xl rounded-br-2xl shadow-lg z-20">
+                    <p class="text-5xl font-bold">100+</p>
+                    <p class="text-xs uppercase tracking-widest mt-2 opacity-90">Projects Done</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-white border-t border-gray-100">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-abi-teal text-xs font-bold uppercase tracking-[0.3em]">Our Team</span>
+                <h3 class="text-3xl font-bold mt-2 text-abi-dark">Leadership</h3>
+                <p class="text-gray-500 text-sm mt-4 max-w-xl mx-auto">Profesional berpengalaman yang siap mewujudkan visi properti Anda.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                 <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-8 bg-gray-50 p-8 rounded-3xl border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                    <div class="w-28 h-28 rounded-full bg-gray-300 overflow-hidden flex-shrink-0 border-4 border-white shadow-md">
+                        <img src="rama.jpg" class="w-full h-full object-cover">
+                    </div>
+                    <div class="text-center md:text-left">
+                        <h5 class="text-2xl font-bold text-abi-dark">Ir. Rama Ganeza, ST., MPr.</h5>
+                        <p class="text-xs uppercase tracking-widest text-abi-teal font-bold mb-3 mt-1">Founder & CEO</p>
+                        <p class="text-sm text-gray-500 leading-relaxed">Ahli konstruksi dan manajemen proyek dengan pengalaman teknis mendalam dalam menangani berbagai skala bangunan.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-8 bg-gray-50 p-8 rounded-3xl border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                    <div class="w-28 h-28 rounded-full bg-gray-300 overflow-hidden flex-shrink-0 border-4 border-white shadow-md">
+                        <img src="angga.jpg" class="w-full h-full object-cover">
+                    </div>
+                    <div class="text-center md:text-left">
+                        <h5 class="text-2xl font-bold text-abi-dark">Angga Aditya Pratama, SE.</h5>
+                        <p class="text-xs uppercase tracking-widest text-abi-teal font-bold mb-3 mt-1">Co-Founder & Head of Marketing</p>
+                        <p class="text-sm text-gray-500 leading-relaxed">Spesialis strategi bisnis dan hubungan klien, memastikan setiap kebutuhan Anda terpenuhi dengan layanan terbaik.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -142,11 +141,26 @@
         <div class="container mx-auto grid md:grid-cols-3 gap-12 text-base font-light">
             <div>
                 <h5 class="text-xl font-bold mb-6">ABI STUDIO</h5>
-                <a href=https://maps.app.goo.gl/z6i7LGbgkYcrLv5n8" target="_blank" class="opacity-80 leading-relaxed hover:text-abi-teal hover:opacity-100 transition flex items-start group text-base">
+                <a href="https://maps.app.goo.gl/hRz4h8xNWNQNWpV3A" target="_blank" class="opacity-80 leading-relaxed hover:text-abi-teal hover:opacity-100 transition flex items-start group text-base mb-6">
                     <i class="fas fa-map-marker-alt mt-1 mr-3 text-abi-teal group-hover:scale-110 transition"></i>
                     <span>Jl. Hidup Baru I No.8 Blok A49C, RT.09/RW.01,<br>Sudimara Pinang, Kec. Pinang,<br>Kota Tangerang, Banten 15145.</span>
                 </a>
+                
+                <div class="rounded-xl overflow-hidden shadow-lg border border-white/10 relative group h-40 w-full hover:border-abi-teal transition duration-300">
+                    <a href="https://maps.app.goo.gl/hRz4h8xNWNQNWpV3A" target="_blank" class="block w-full h-full">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.339472620703!2d106.69085697587784!3d-6.218883660911768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f9a466336421%3A0x705c750059c0499!2sJl.%20Hidup%20Baru%20I%20No.8%2C%20RT.004%2FRW.001%2C%20Sudimara%20Pinang%2C%20Kec.%20Pinang%2C%20Kota%20Tangerang%2C%20Banten%2015145!5e0!3m2!1sid!2sid!4v1709650000000!5m2!1sid!2sid" 
+                            width="100%" height="100%" style="border:0; pointer-events: none;" allowfullscreen="" loading="lazy">
+                        </iframe>
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition duration-300 flex items-center justify-center">
+                            <span class="opacity-0 group-hover:opacity-100 bg-abi-teal text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg transform translate-y-2 group-hover:translate-y-0 transition">
+                                <i class="fas fa-map-marked-alt mr-2"></i>Buka Maps
+                            </span>
+                        </div>
+                    </a>
+                </div>
             </div>
+
             <div>
                 <h5 class="text-xs uppercase tracking-[0.3em] font-bold mb-6 opacity-80">Contact Us</h5>
                 <div class="space-y-6">
@@ -164,16 +178,24 @@
                     </div>
                 </div>
             </div>
+
             <div class="md:text-right flex flex-col justify-between">
                 <div>
                     <h5 class="text-xs uppercase tracking-[0.3em] font-bold mb-6 opacity-80">Social</h5>
                     <div class="flex md:justify-end space-x-8 text-2xl opacity-80">
                         <a href="https://www.instagram.com/abi.studio.id/" target="_blank" class="hover:text-abi-teal transition"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <p class="text-xs uppercase tracking-[0.3em] opacity-50 mt-10">© 2025 ABI STUDIO</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-    function toggleMobileMenu() {
-        document.getElementById('mobileMenu').classList.toggle('hidden');
-    }
-</script>
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+    </script>
 
 </body>
 </html>
