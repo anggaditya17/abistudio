@@ -12,7 +12,7 @@
                 extend: {
                     colors: { 
                         abi: { teal: '#4A6D6D', dark: '#1a1a1a' },
-                        promo: '#F97316' // Warna Orange untuk Top Bar
+                        promo: '#F97316' 
                     },
                     fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] }
                 }
@@ -25,42 +25,36 @@
         .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
         .animate-up { animation: slideUp 0.4s ease-out forwards; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        
-        /* CSS untuk Running Text */
         .marquee-container { overflow: hidden; white-space: nowrap; position: relative; }
         .marquee-content { display: inline-block; animation: marquee 35s linear infinite; padding-left: 100%; }
         @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
     </style>
 </head>
-<body class="bg-gray-50 flex flex-col min-h-screen pt-10"> <div class="fixed top-0 w-full z-[60] bg-promo text-white text-[10px] md:text-xs font-bold leading-9 md:leading-10 shadow-md">
+<body class="bg-gray-50 flex flex-col min-h-screen pt-10">
+
+    <div class="fixed top-0 w-full z-[60] bg-promo text-white text-[10px] md:text-xs font-bold leading-9 md:leading-10 shadow-md">
         <div class="marquee-container">
-            <div id="tickerContent" class="marquee-content uppercase tracking-wider">
-                </div>
+            <div id="tickerContent" class="marquee-content uppercase tracking-wider"></div>
         </div>
     </div>
 
     <nav class="fixed w-full top-9 md:top-10 z-[50] bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all duration-300">
         <div class="container mx-auto px-6 py-2 flex justify-between items-center">
-            
             <a href="index.html" class="flex items-center">
                 <img src="logo.png" alt="ABI STUDIO" class="h-14 w-auto object-contain">
             </a>
-
             <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-[0.15em] text-gray-700 items-center">
                 <a href="index.html" class="hover:text-abi-teal transition pb-1">Home</a>
                 <a href="about.html" class="hover:text-abi-teal transition pb-1">About</a>
                 <a href="services.html" class="hover:text-abi-teal transition pb-1">Layanan</a>
                 <a href="paket.html" class="hover:text-abi-teal transition pb-1 text-abi-teal">Paket</a>
                 <a href="portfolio.html" class="hover:text-abi-teal transition pb-1">Portfolio</a>
-                
                 <a href="https://wa.me/6285157577465" target="_blank" class="bg-abi-teal text-white px-6 py-2 rounded-full hover:bg-abi-dark transition duration-300 shadow-lg text-xs md:text-sm">Contact</a>
             </div>
-
             <button class="md:hidden text-abi-teal text-2xl" onclick="toggleMobileMenu()">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
-
         <div id="mobileMenu" class="hidden md:hidden absolute w-full bg-white text-black py-4 px-6 shadow-2xl border-t">
             <div class="flex flex-col space-y-4 text-sm font-bold uppercase tracking-widest text-center">
                 <a href="index.html" class="hover:text-abi-teal py-2">Home</a>
@@ -102,22 +96,22 @@
             </div>
 
             <div onclick="openOrder('Paket 2 (Standard)', 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800')" class="bg-abi-teal text-white p-10 shadow-xl transition cursor-pointer transform md:-translate-y-4 relative rounded-2xl flex flex-col h-full">
-    <div class="absolute top-0 right-0 p-4"><span class="bg-white text-abi-teal text-[10px] px-3 py-1 font-bold rounded">BEST SELLER</span></div>
-    <span class="text-sm font-bold text-white/50">02</span>
-    <h4 class="text-2xl font-bold mt-4 mb-2">Standard</h4>
-    <p class="text-4xl font-light mb-8">22rb<span class="text-sm text-white/50">/m²</span></p>
-    <ul class="text-sm text-white/90 space-y-4 mb-10 flex-grow">
-        <li class="flex items-start"><i class="fas fa-check text-white mr-3 mt-1"></i> Denah & Tampak Lengkap</li>
-        <li class="flex items-start"><i class="fas fa-check text-white mr-3 mt-1"></i> Potongan & Pola Lantai</li>
-        <li class="flex items-start"><i class="fas fa-check text-white mr-3 mt-1"></i> 3D Modeling Full</li>
-    </ul>
-    <button class="w-full py-4 bg-white text-abi-teal text-xs font-bold uppercase tracking-widest hover:bg-abi-dark hover:text-white transition rounded-full mb-8">Pilih Paket</button>
-    <div class="pt-6 border-t border-white/20 mt-auto">
-        <div class="flex text-yellow-300 text-xs mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="text-sm italic text-white/90 mb-2">"Render 3D-nya real banget!"</p>
-        <p class="text-sm font-bold text-white">— Ibu M.S</p>
-    </div>
-</div>
+                <div class="absolute top-0 right-0 p-4"><span class="bg-white text-abi-teal text-[10px] px-3 py-1 font-bold rounded">BEST SELLER</span></div>
+                <span class="text-sm font-bold text-white/50">02</span>
+                <h4 class="text-2xl font-bold mt-4 mb-2">Standard</h4>
+                <p class="text-4xl font-light mb-8">22rb<span class="text-sm text-white/50">/m²</span></p>
+                <ul class="text-sm text-white/90 space-y-4 mb-10 flex-grow">
+                    <li class="flex items-start"><i class="fas fa-check text-white mr-3 mt-1"></i> Denah & Tampak Lengkap</li>
+                    <li class="flex items-start"><i class="fas fa-check text-white mr-3 mt-1"></i> Potongan & Pola Lantai</li>
+                    <li class="flex items-start"><i class="fas fa-check text-white mr-3 mt-1"></i> 3D Modeling Full</li>
+                </ul>
+                <button class="w-full py-4 bg-white text-abi-teal text-xs font-bold uppercase tracking-widest hover:bg-abi-dark hover:text-white transition rounded-full mb-8">Pilih Paket</button>
+                <div class="pt-6 border-t border-white/20 mt-auto">
+                    <div class="flex text-yellow-300 text-xs mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-sm italic text-white/90 mb-2">"Render 3D-nya real banget!"</p>
+                    <p class="text-sm font-bold text-white">— Ibu M.S</p>
+                </div>
+            </div>
 
             <div onclick="openOrder('Paket 3 (Advance)', 'https://images.unsplash.com/photo-1600607687644-c7171b42498f')" class="bg-white p-10 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-abi-teal rounded-2xl flex flex-col h-full">
                 <span class="text-sm font-bold text-gray-300">03</span>
@@ -156,7 +150,7 @@
     </section>
 
     <footer class="bg-abi-dark text-white py-12 text-center text-sm mt-auto">
-        <p class="opacity-50 uppercase tracking-[0.2em]">&copy; 2026 ABI STUDIO. All Rights Reserved.</p>
+        <p class="opacity-50 uppercase tracking-[0.2em]">&copy; 2025 ABI STUDIO. All Rights Reserved.</p>
     </footer>
 
     <div id="orderModal" class="modal-overlay">
@@ -175,17 +169,19 @@
                         <input type="text" id="clientName" placeholder="Contoh: Budi Santoso" class="w-full border-b border-gray-200 py-3 text-base focus:outline-none focus:border-abi-teal transition bg-transparent">
                     </div>
                     <div>
-                        <label class="text-xs font-bold text-gray-500 uppercase">Luas Bangunan</label>
+                        <label class="text-xs font-bold text-gray-500 uppercase">Luas Bangunan / Area</label>
                         <input type="number" id="area" placeholder="Contoh: 150 (dalam m²)" class="w-full border-b border-gray-200 py-3 text-base focus:outline-none focus:border-abi-teal transition bg-transparent">
                     </div>
                     <div>
                         <label class="text-xs font-bold text-gray-500 uppercase">Jenis Bangunan</label>
                         <select id="type" class="w-full border-b border-gray-200 py-3 text-base focus:outline-none focus:border-abi-teal transition bg-transparent text-gray-600">
                             <option value="Rumah Tinggal">Rumah Tinggal</option>
-                            <option value="Kantor">Kantor</option>
-                            <option value="Ruko">Ruko</option>
+                            <option value="Kantor/Ruko">Kantor/Ruko</option>
                             <option value="Gudang">Gudang</option>
                             <option value="Renovasi">Renovasi</option>
+                            <option value="Kanopi/Eksterior">Kanopi/Eksterior</option>
+                            <option value="Kolam Renang">Kolam Renang</option>
+                            <option value="Interior/Kitchen Set">Interior/Kitchen Set</option>
                         </select>
                     </div>
                     <div>
@@ -203,51 +199,75 @@
     </div>
 
     <script>
-    // --- 1. SCRIPT FAKE DATA & MASKING NAMA ---
+    // --- 1. SCRIPT DETEKSI LEADS DARI SERVICES.HTML ---
+    // Ini adalah otak yang menghubungkan Services -> Paket secara otomatis
     
-    // Data awal (Fake Buyers) agar running text tidak kosong saat web dibuka
-    const fakeBuyers = [
-        "MUHAMMAD FAIZAL", "SITI AMINAH", "CV. BERKAH JAYA", 
-        "RUDI HARTONO", "ANDI PRATAMA", "DEWI SARTIKA", 
-        "PT. BANGUN INDAH", "HENDRA GUNAWAN", "RIZKY RAMADHAN"
-    ];
+    window.onload = function() {
+        updateTickerDisplay(); // Jalankan running text
+        
+        // Baca URL (apakah ada ?service=...)
+        const urlParams = new URLSearchParams(window.location.search);
+        const serviceType = urlParams.get('service');
+        
+        if(serviceType) {
+            let customTitle = "Konsultasi Layanan";
+            let customImg = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"; // Default Image
+            let autoSelectType = "Rumah Tinggal";
 
-    // Fungsi untuk menyamarkan nama (Masking)
-    function maskName(name) {
-        if (name.length <= 4) return name; // Jangan mask jika nama terlalu pendek
-        const firstPart = name.slice(0, 3);
-        const lastPart = name.slice(-3);
-        return `${firstPart}********${lastPart}`;
+            // Logika pemilihan judul & gambar berdasarkan link dari services.html
+            if(serviceType === 'arsitek') {
+                customTitle = "Konsultasi Arsitek";
+                customImg = "https://images.unsplash.com/photo-1512917774080-9991f1c4c750";
+                autoSelectType = "Rumah Tinggal";
+            } else if(serviceType === 'interior') {
+                customTitle = "Konsultasi Interior";
+                customImg = "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0";
+                autoSelectType = "Interior/Kitchen Set";
+            } else if(serviceType === 'kanopi') {
+                customTitle = "Jasa Kanopi & Eksterior";
+                customImg = "https://images.unsplash.com/photo-1497366216548-37526070297c";
+                autoSelectType = "Kanopi/Eksterior";
+            } else if(serviceType === 'pool') {
+                customTitle = "Pembuatan Kolam Renang";
+                customImg = "https://images.unsplash.com/photo-1572331165267-854da2b00dc1";
+                autoSelectType = "Kolam Renang";
+            } else if(serviceType === 'renovasi') {
+                customTitle = "Jasa Renovasi Sipil";
+                customImg = "https://images.unsplash.com/photo-1503387762-592deb58ef4e";
+                autoSelectType = "Renovasi";
+            }
+
+            // Buka Modal Secara Otomatis
+            openOrder(customTitle, customImg);
+            
+            // Pilih Dropdown Jenis Bangunan secara otomatis
+            setTimeout(() => {
+                document.getElementById('type').value = autoSelectType;
+            }, 100);
+        }
     }
 
-    // Fungsi update tampilan text
+    // --- 2. SCRIPT FAKE DATA & RUNNING TEXT ---
+    const fakeBuyers = ["MUHAMMAD FAIZAL", "SITI AMINAH", "CV. BERKAH JAYA", "RUDI HARTONO", "ANDI PRATAMA", "DEWI SARTIKA", "PT. BANGUN INDAH"];
+    function maskName(name) {
+        if (name.length <= 4) return name; 
+        return `${name.slice(0, 3)}********${name.slice(-3)}`;
+    }
     function updateTickerDisplay() {
         const container = document.getElementById('tickerContent');
         let htmlContent = "";
-        
-        // Loop data dan buat string
         fakeBuyers.forEach(buyer => {
             const masked = maskName(buyer);
-            // Menambahkan nama masked + teks paket secara acak agar terlihat real
-            const randomAction = Math.random() > 0.5 ? "baru saja memesan PAKET STANDARD" : "sedang konsultasi PAKET ADVANCE";
+            const randomAction = Math.random() > 0.5 ? "memesan PAKET STANDARD" : "konsultasi RENOVASI";
             htmlContent += `<span class="mx-8"><i class="fas fa-check-circle text-white/70 mr-2"></i> ${masked} ${randomAction}</span>`;
         });
-
-        // Duplikasi konten agar looping terlihat seamless (opsional, tapi bagus)
         container.innerHTML = htmlContent + htmlContent;
     }
 
-    // Jalankan saat load
-    updateTickerDisplay();
-
-    // --- 2. SCRIPT MENU MOBILE ---
-    function toggleMobileMenu() {
-        document.getElementById('mobileMenu').classList.toggle('hidden');
-    }
-
-    // --- 3. SCRIPT MODAL & WHATSAPP ---
-    let selectedPkg = "";
+    // --- 3. LOGIKA MODAL STANDAR ---
+    function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
     
+    let selectedPkg = "";
     function openOrder(pkg, img) { 
         selectedPkg = pkg; 
         document.getElementById('modalTitle').innerText = pkg; 
@@ -259,10 +279,12 @@
     function closeOrder() { 
         document.getElementById('orderModal').style.display = 'none'; 
         document.body.style.overflow = 'auto'; 
+        // Bersihkan URL parameter agar kalau di refresh tidak pop up terus
+        window.history.pushState({}, document.title, window.location.pathname);
     }
     
     function sendWhatsApp() {
-        const name = document.getElementById('clientName').value.toUpperCase(); // Ambil Nama
+        const name = document.getElementById('clientName').value.toUpperCase(); 
         const area = document.getElementById('area').value; 
         const type = document.getElementById('type').value; 
         const location = document.getElementById('location').value; 
@@ -273,34 +295,26 @@
             return; 
         }
         
-        // --- LOGIC TAMBAHAN: Update Running Text secara Real-time ---
-        // Masukkan nama klien asli ke antrian paling depan array fakeBuyers
-        fakeBuyers.unshift(name); 
-        // Hapus data terakhir agar array tidak kepanjangan
-        if(fakeBuyers.length > 15) fakeBuyers.pop();
-        // Render ulang running text
-        updateTickerDisplay();
+        fakeBuyers.unshift(name); if(fakeBuyers.length > 15) fakeBuyers.pop(); updateTickerDisplay();
 
-        // Format pesan WhatsApp
         const msg = `Halo ABI Studio,%0A` + 
                     `Saya tertarik dengan layanan:%0A%0A` + 
                     `📝 *${selectedPkg}*%0A` + 
                     `--------------------------------%0A` +
                     `👤 Nama Klien : ${name}%0A` + 
-                    `📐 Luas Bangunan : ${area} m²%0A` + 
-                    `🏡 Jenis Bangunan : ${type}%0A` + 
+                    `📐 Luas/Area : ${area} m²%0A` + 
+                    `🏡 Kategori : ${type}%0A` + 
                     `📍 Lokasi : ${location}%0A` + 
-                    `📅 Rencana Bangun : ${date}%0A` + 
+                    `📅 Rencana : ${date}%0A` + 
                     `--------------------------------%0A` +
-                    `Mohon info prosedur selanjutnya. Terima kasih.`;
+                    `Mohon info estimasi biaya. Terima kasih.`;
         
         window.open(`https://wa.me/6285157577465?text=${msg}`, '_blank'); 
         closeOrder();
     }
     
-    window.onclick = function(e) { 
-        if(e.target == document.getElementById('orderModal')) closeOrder(); 
-    }
-</script>
+    window.onclick = function(e) { if(e.target == document.getElementById('orderModal')) closeOrder(); }
+    </script>
+
 </body>
 </html>
