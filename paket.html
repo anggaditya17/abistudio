@@ -10,7 +10,10 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { abi: { teal: '#4A6D6D', dark: '#1a1a1a' } },
+                    colors: { 
+                        abi: { teal: '#4A6D6D', dark: '#1a1a1a' },
+                        promo: '#F97316' // Warna Orange untuk Top Bar
+                    },
                     fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] }
                 }
             }
@@ -22,11 +25,21 @@
         .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
         .animate-up { animation: slideUp 0.4s ease-out forwards; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* CSS untuk Running Text */
+        .marquee-container { overflow: hidden; white-space: nowrap; position: relative; }
+        .marquee-content { display: inline-block; animation: marquee 35s linear infinite; padding-left: 100%; }
+        @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
     </style>
 </head>
-<body class="bg-gray-50 flex flex-col min-h-screen">
+<body class="bg-gray-50 flex flex-col min-h-screen pt-10"> <div class="fixed top-0 w-full z-[60] bg-promo text-white text-[10px] md:text-xs font-bold leading-9 md:leading-10 shadow-md">
+        <div class="marquee-container">
+            <div id="tickerContent" class="marquee-content uppercase tracking-wider">
+                </div>
+        </div>
+    </div>
 
-    <nav class="fixed w-full top-0 z-[50] bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all duration-300">
+    <nav class="fixed w-full top-9 md:top-10 z-[50] bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all duration-300">
         <div class="container mx-auto px-6 py-2 flex justify-between items-center">
             
             <a href="index.html" class="flex items-center">
@@ -37,7 +50,7 @@
                 <a href="index.html" class="hover:text-abi-teal transition pb-1">Home</a>
                 <a href="about.html" class="hover:text-abi-teal transition pb-1">About</a>
                 <a href="services.html" class="hover:text-abi-teal transition pb-1">Layanan</a>
-                <a href="paket.html" class="hover:text-abi-teal transition pb-1">Paket</a>
+                <a href="paket.html" class="hover:text-abi-teal transition pb-1 text-abi-teal">Paket</a>
                 <a href="portfolio.html" class="hover:text-abi-teal transition pb-1">Portfolio</a>
                 
                 <a href="https://wa.me/6285157577465" target="_blank" class="bg-abi-teal text-white px-6 py-2 rounded-full hover:bg-abi-dark transition duration-300 shadow-lg text-xs md:text-sm">Contact</a>
@@ -59,6 +72,7 @@
             </div>
         </div>
     </nav>
+
     <header class="pt-48 pb-24 bg-abi-dark text-white text-center px-6 relative overflow-hidden">
         <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000')] bg-cover bg-center"></div>
         <div class="relative z-10">
@@ -152,36 +166,141 @@
                 <img id="modalImg" src="" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-abi-teal/20"></div>
             </div>
-            <div class="md:w-3/5 p-10 md:p-14">
+            <div class="md:w-3/5 p-8 md:p-14 overflow-y-auto max-h-[90vh]">
                 <h4 id="modalTitle" class="text-3xl font-bold mb-2">Nama Paket</h4>
-                <p class="text-xs uppercase tracking-widest text-gray-400 mb-8">Lengkapi Detail Proyek</p>
-                <div class="space-y-6">
-                    <input type="number" id="area" placeholder="Luas Bangunan (m²)" class="w-full border-b border-gray-200 py-4 text-base focus:outline-none focus:border-abi-teal transition bg-transparent">
-                    <select id="type" class="w-full border-b border-gray-200 py-4 text-base focus:outline-none focus:border-abi-teal transition bg-transparent text-gray-600">
-                        <option value="Rumah">Rumah Tinggal</option>
-                        <option value="Kantor">Kantor</option>
-                        <option value="Ruko">Ruko</option>
-                        <option value="Gudang">Gudang</option>
-                    </select>
-                    <input type="text" id="location" placeholder="Lokasi Proyek" class="w-full border-b border-gray-200 py-4 text-base focus:outline-none focus:border-abi-teal transition bg-transparent">
-                    <input type="text" id="date" placeholder="Rencana Pembangunan" class="w-full border-b border-gray-200 py-4 text-base focus:outline-none focus:border-abi-teal transition bg-transparent">
-                    <button onclick="sendWhatsApp()" class="w-full bg-abi-teal text-white py-5 rounded-full font-bold text-sm uppercase tracking-[0.2em] hover:bg-abi-dark transition duration-300 mt-4">Kirim via WhatsApp</button>
+                <p class="text-xs uppercase tracking-widest text-gray-400 mb-6">Lengkapi Detail Proyek</p>
+                <div class="space-y-4">
+                    <div>
+                        <label class="text-xs font-bold text-gray-500 uppercase">Nama Anda</label>
+                        <input type="text" id="clientName" placeholder="Contoh: Budi Santoso" class="w-full border-b border-gray-200 py-3 text-base focus:outline-none focus:border-abi-teal transition bg-transparent">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-gray-500 uppercase">Luas Bangunan</label>
+                        <input type="number" id="area" placeholder="Contoh: 150 (dalam m²)" class="w-full border-b border-gray-200 py-3 text-base focus:outline-none focus:border-abi-teal transition bg-transparent">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-gray-500 uppercase">Jenis Bangunan</label>
+                        <select id="type" class="w-full border-b border-gray-200 py-3 text-base focus:outline-none focus:border-abi-teal transition bg-transparent text-gray-600">
+                            <option value="Rumah Tinggal">Rumah Tinggal</option>
+                            <option value="Kantor">Kantor</option>
+                            <option value="Ruko">Ruko</option>
+                            <option value="Gudang">Gudang</option>
+                            <option value="Renovasi">Renovasi</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-gray-500 uppercase">Lokasi Proyek</label>
+                        <input type="text" id="location" placeholder="Contoh: Cipondoh, Tangerang" class="w-full border-b border-gray-200 py-3 text-base focus:outline-none focus:border-abi-teal transition bg-transparent">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-gray-500 uppercase">Rencana Bangun</label>
+                        <input type="text" id="date" placeholder="Contoh: Bulan Depan" class="w-full border-b border-gray-200 py-3 text-base focus:outline-none focus:border-abi-teal transition bg-transparent">
+                    </div>
+                    <button onclick="sendWhatsApp()" class="w-full bg-abi-teal text-white py-5 rounded-full font-bold text-sm uppercase tracking-[0.2em] hover:bg-abi-dark transition duration-300 mt-6">Kirim via WhatsApp</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        let selectedPkg = "";
-        function openOrder(pkg, img) { selectedPkg = pkg; document.getElementById('modalTitle').innerText = pkg; document.getElementById('modalImg').src = img || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c'; document.getElementById('orderModal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-        function closeOrder() { document.getElementById('orderModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
-        function sendWhatsApp() {
-            const area = document.getElementById('area').value; const type = document.getElementById('type').value; const location = document.getElementById('location').value; const date = document.getElementById('date').value;
-            if(!area || !location || !date) { alert("Mohon lengkapi data."); return; }
-            const msg = `Halo ABI Studio,%0A` + `Saya tertarik dengan layanan:%0A%0A` + `📝 Nama Paket : *${selectedPkg}*%0A` + `📐 Luas Bangunan : ${area} m²%0A` + `🏡 Jenis Bangunan : ${type}%0A` + `📍 Lokasi Proyek : ${location}%0A` + `📅 Rencana Pembangunan : ${date}%0A%0A` + `Mohon info lebih lanjut.`;
-            window.open(`https://wa.me/6285157577465?text=${msg}`, '_blank'); closeOrder();
+    // --- 1. SCRIPT FAKE DATA & MASKING NAMA ---
+    
+    // Data awal (Fake Buyers) agar running text tidak kosong saat web dibuka
+    const fakeBuyers = [
+        "MUHAMMAD FAIZAL", "SITI AMINAH", "CV. BERKAH JAYA", 
+        "RUDI HARTONO", "ANDI PRATAMA", "DEWI SARTIKA", 
+        "PT. BANGUN INDAH", "HENDRA GUNAWAN", "RIZKY RAMADHAN"
+    ];
+
+    // Fungsi untuk menyamarkan nama (Masking)
+    function maskName(name) {
+        if (name.length <= 4) return name; // Jangan mask jika nama terlalu pendek
+        const firstPart = name.slice(0, 3);
+        const lastPart = name.slice(-3);
+        return `${firstPart}********${lastPart}`;
+    }
+
+    // Fungsi update tampilan text
+    function updateTickerDisplay() {
+        const container = document.getElementById('tickerContent');
+        let htmlContent = "";
+        
+        // Loop data dan buat string
+        fakeBuyers.forEach(buyer => {
+            const masked = maskName(buyer);
+            // Menambahkan nama masked + teks paket secara acak agar terlihat real
+            const randomAction = Math.random() > 0.5 ? "baru saja memesan PAKET STANDARD" : "sedang konsultasi PAKET ADVANCE";
+            htmlContent += `<span class="mx-8"><i class="fas fa-check-circle text-white/70 mr-2"></i> ${masked} ${randomAction}</span>`;
+        });
+
+        // Duplikasi konten agar looping terlihat seamless (opsional, tapi bagus)
+        container.innerHTML = htmlContent + htmlContent;
+    }
+
+    // Jalankan saat load
+    updateTickerDisplay();
+
+    // --- 2. SCRIPT MENU MOBILE ---
+    function toggleMobileMenu() {
+        document.getElementById('mobileMenu').classList.toggle('hidden');
+    }
+
+    // --- 3. SCRIPT MODAL & WHATSAPP ---
+    let selectedPkg = "";
+    
+    function openOrder(pkg, img) { 
+        selectedPkg = pkg; 
+        document.getElementById('modalTitle').innerText = pkg; 
+        document.getElementById('modalImg').src = img || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c'; 
+        document.getElementById('orderModal').style.display = 'flex'; 
+        document.body.style.overflow = 'hidden'; 
+    }
+    
+    function closeOrder() { 
+        document.getElementById('orderModal').style.display = 'none'; 
+        document.body.style.overflow = 'auto'; 
+    }
+    
+    function sendWhatsApp() {
+        const name = document.getElementById('clientName').value.toUpperCase(); // Ambil Nama
+        const area = document.getElementById('area').value; 
+        const type = document.getElementById('type').value; 
+        const location = document.getElementById('location').value; 
+        const date = document.getElementById('date').value;
+        
+        if(!name || !area || !location || !date) { 
+            alert("Mohon lengkapi data proyek (termasuk Nama Anda)."); 
+            return; 
         }
-        window.onclick = function(e) { if(e.target == document.getElementById('orderModal')) closeOrder(); }
-    </script>
+        
+        // --- LOGIC TAMBAHAN: Update Running Text secara Real-time ---
+        // Masukkan nama klien asli ke antrian paling depan array fakeBuyers
+        fakeBuyers.unshift(name); 
+        // Hapus data terakhir agar array tidak kepanjangan
+        if(fakeBuyers.length > 15) fakeBuyers.pop();
+        // Render ulang running text
+        updateTickerDisplay();
+
+        // Format pesan WhatsApp
+        const msg = `Halo ABI Studio,%0A` + 
+                    `Saya tertarik dengan layanan:%0A%0A` + 
+                    `📝 *${selectedPkg}*%0A` + 
+                    `--------------------------------%0A` +
+                    `👤 Nama Klien : ${name}%0A` + 
+                    `📐 Luas Bangunan : ${area} m²%0A` + 
+                    `🏡 Jenis Bangunan : ${type}%0A` + 
+                    `📍 Lokasi : ${location}%0A` + 
+                    `📅 Rencana Bangun : ${date}%0A` + 
+                    `--------------------------------%0A` +
+                    `Mohon info prosedur selanjutnya. Terima kasih.`;
+        
+        window.open(`https://wa.me/6285157577465?text=${msg}`, '_blank'); 
+        closeOrder();
+    }
+    
+    window.onclick = function(e) { 
+        if(e.target == document.getElementById('orderModal')) closeOrder(); 
+    }
+</script>
 </body>
 </html>
