@@ -47,7 +47,7 @@
         
         .marquee-container { overflow: hidden; white-space: nowrap; position: relative; }
         
-        /* FIX SPEED: Diperlambat jadi 60 detik (sebelumnya 35s) */
+        /* FIX SPEED: Diperlambat jadi 60 detik */
         .marquee-content { display: inline-block; animation: marquee 60s linear infinite; padding-left: 100%; }
         @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
     </style>
@@ -172,6 +172,12 @@
                         <label class="text-xs font-bold text-gray-500 uppercase">Nama Anda</label>
                         <input type="text" id="clientName" placeholder="Contoh: Budi Santoso" class="w-full border-b border-gray-200 py-3 text-base focus:outline-none focus:border-abi-teal transition bg-transparent">
                     </div>
+                    
+                    <div>
+                        <label class="text-xs font-bold text-gray-500 uppercase">No. WhatsApp / HP</label>
+                        <input type="tel" id="clientPhone" placeholder="Contoh: 08123456789" class="w-full border-b border-gray-200 py-3 text-base focus:outline-none focus:border-abi-teal transition bg-transparent">
+                    </div>
+
                     <div>
                         <label class="text-xs font-bold text-gray-500 uppercase">Luas Bangunan / Area</label>
                         <input type="number" id="area" placeholder="Contoh: 150 (dalam m²)" class="w-full border-b border-gray-200 py-3 text-base focus:outline-none focus:border-abi-teal transition bg-transparent">
@@ -250,27 +256,34 @@
         window.history.pushState({}, document.title, window.location.pathname);
     }
     
-    // --- FIX WHATSAPP LOGIC ---
+    // --- UPDATED SEND WHATSAPP LOGIC ---
     function sendWhatsApp() {
-        const name = document.getElementById('clientName').value.toUpperCase(); 
+        const name = document.getElementById('clientName').value.toUpperCase();
+        // Ambil nilai dari input No. WhatsApp
+        const phone = document.getElementById('clientPhone').value; 
         const area = document.getElementById('area').value; 
         const type = document.getElementById('type').value; 
         const location = document.getElementById('location').value; 
         const date = document.getElementById('date').value;
         
-        if(!name || !area || !location || !date) { alert("Mohon lengkapi data proyek (termasuk Nama Anda)."); return; }
+        // Cek validasi (termasuk phone)
+        if(!name || !phone || !area || !location || !date) { 
+            alert("Mohon lengkapi semua data proyek (Termasuk No. WhatsApp)."); 
+            return; 
+        }
         
         const btn = document.querySelector('button[onclick="sendWhatsApp()"]');
         const originalText = btn.innerText;
         btn.innerText = "Memproses...";
         btn.disabled = true;
 
-        // Pesan WhatsApp yang akan dikirim
+        // Pesan WhatsApp yang akan dikirim (Ditambahkan No. WA)
         const msg = `Halo ABI Studio,%0A` + 
                     `Saya tertarik dengan layanan:%0A%0A` + 
                     `📝 *${selectedPkg}*%0A` + 
                     `--------------------------------%0A` +
                     `👤 Nama Klien : ${name}%0A` + 
+                    `📱 No. WA : ${phone}%0A` +  
                     `📐 Luas/Area : ${area} m²%0A` + 
                     `🏡 Kategori : ${type}%0A` + 
                     `📍 Lokasi : ${location}%0A` + 
@@ -281,9 +294,10 @@
         // Link WhatsApp Lengkap
         const waLink = `https://wa.me/6285157577465?text=${msg}`;
 
-        // SIMPAN KE FIREBASE
+        // SIMPAN KE FIREBASE (Ditambahkan field no_hp)
         db.collection("leads").add({
             nama_klien: name,
+            no_hp: phone, // Simpan nomor HP ke database
             paket_dipilih: selectedPkg,
             luas_bangunan: area,
             jenis_bangunan: type,
@@ -296,7 +310,7 @@
             // UPDATE RUNNING TEXT
             fakeBuyers.unshift(name); if(fakeBuyers.length > 15) fakeBuyers.pop(); updateTickerDisplay();
             
-            // REDIRECT LANGSUNG KE WHATSAPP (Aman dari Popup Blocker)
+            // REDIRECT LANGSUNG KE WHATSAPP
             window.location.href = waLink;
         })
         .catch((error) => {
