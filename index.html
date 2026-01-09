@@ -277,28 +277,39 @@
                             class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
                         <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-abi-dark shadow-sm">Tips Sipil</div>
                     </div>
-                    <div class="p-8 flex flex-col flex-grow">
-                        <div class="text-xs text-gray-400 mb-3 flex items-center"><i class="far fa-calendar-alt mr-2"></i> 5 Jan 2026</div>
-                        <h4 class="text-xl font-bold mb-3 text-abi-dark group-hover:text-abi-teal transition line-clamp-2">Ciri-ciri Pondasi Rumah yang Kuat & Tahan Gempa</h4>
-                        <p class="text-gray-500 text-sm line-clamp-3 leading-relaxed mb-6">Jangan salah pilih material! Simak 5 hal wajib yang harus dicek saat pembuatan pondasi cakar ayam.</p>
-                        <div class="mt-auto">
-                            <span class="inline-block text-xs font-bold text-abi-teal uppercase tracking-widest border-b border-gray-200 pb-1 group-hover:border-abi-teal transition">Baca Selengkapnya</span>
-                        </div>
+                     <div class="md:w-3/5 p-8 flex flex-col justify-center">
+                        <div class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-wider text-abi-teal">Material • 9 Jan 2026</div>
+                        <h2 onclick="fetchArticle('article7')" class="text-2xl font-bold mb-3 text-abi-dark hover:text-abi-teal cursor-pointer transition">Bata Merah vs Hebel: Mana yang Lebih Cocok untuk Rumah di Jabodetabek?</h2>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Simak perbandingan biaya, ketahanan panas, hingga kecepatan pasang.</p>
+                        <button onclick="fetchArticle('article7')" class="text-sm font-bold border-b border-gray-300 pb-1 self-start hover:border-abi-teal hover:text-abi-teal transition">Baca Selengkapnya</button>
                     </div>
                 </article>
 
-                <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 group cursor-pointer border border-gray-100 flex flex-col h-full" onclick="window.location.href='blog.html'">
-                    <div class="relative overflow-hidden h-56 flex-shrink-0">
-                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
-                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-abi-dark shadow-sm">Renovasi</div>
+                <article class="blog-item bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row group" data-title="Tembok Rembes Saat Musim Hujan? Ini Cara Permanen Mengatasinya!">
+                    <div class="md:w-2/5 h-64 md:h-auto relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?q=80&w=800" 
+                             onerror="this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800'"
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
                     </div>
-                    <div class="p-8 flex flex-col flex-grow">
-                        <div class="text-xs text-gray-400 mb-3 flex items-center"><i class="far fa-calendar-alt mr-2"></i> 2 Jan 2026</div>
-                        <h4 class="text-xl font-bold mb-3 text-abi-dark group-hover:text-abi-teal transition line-clamp-2">Estimasi Biaya Meningkat Rumah (Ngedak) Lantai 2</h4>
-                        <p class="text-gray-500 text-sm line-clamp-3 leading-relaxed mb-6">Hitungan real per meter persegi untuk dak beton konvensional vs bondek. Mana yang lebih hemat?</p>
-                        <div class="mt-auto">
-                            <span class="inline-block text-xs font-bold text-abi-teal uppercase tracking-widest border-b border-gray-200 pb-1 group-hover:border-abi-teal transition">Baca Selengkapnya</span>
-                        </div>
+                    <div class="md:w-3/5 p-8 flex flex-col justify-center">
+                        <div class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-wider text-abi-teal">Masalah Sipil • 8 Jan 2026</div>
+                        <h2 onclick="fetchArticle('article6')" class="text-2xl font-bold mb-3 text-abi-dark hover:text-abi-teal cursor-pointer transition">Tembok Rembes Saat Musim Hujan? Ini Cara Permanen Mengatasinya!</h2>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Kenali penyebab air masuk ke pori-pori dinding Anda dan solusinya.</p>
+                        <button onclick="fetchArticle('article6')" class="text-sm font-bold border-b border-gray-300 pb-1 self-start hover:border-abi-teal hover:text-abi-teal transition">Baca Selengkapnya</button>
+                    </div>
+                </article>
+
+                <article class="blog-item bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row group" data-title="Renovasi Hemat: Ubah Tampilan Rumah Tanpa Bongkar Tembok!">
+                    <div class="md:w-2/5 h-64 md:h-auto relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800" 
+                             onerror="this.src='https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800'"
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="md:w-3/5 p-8 flex flex-col justify-center">
+                        <div class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-wider text-abi-teal">Tips Renovasi • 7 Jan 2026</div>
+                        <h2 onclick="fetchArticle('article5')" class="text-2xl font-bold mb-3 text-abi-dark hover:text-abi-teal cursor-pointer transition">Renovasi Hemat: Ubah Tampilan Rumah Tanpa Bongkar Tembok!</h2>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Simak trik cerdas memperbarui estetika ruang hanya dengan permainan warna.</p>
+                        <button onclick="fetchArticle('article5')" class="text-sm font-bold border-b border-gray-300 pb-1 self-start hover:border-abi-teal hover:text-abi-teal transition">Baca Selengkapnya</button>
                     </div>
                 </article>
 
