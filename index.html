@@ -41,31 +41,17 @@
         img { transition: transform 0.5s ease; }
         .group:hover img { transform: scale(1.05); }
         
-        /* Org Logo Styling (Grayscale to Color) */
+        /* Org Logo Styling */
         .org-logo { filter: grayscale(100%) opacity(0.7); transition: all 0.4s ease; mix-blend-mode: multiply; }
         .org-logo:hover { filter: grayscale(0%) opacity(1); transform: scale(1.1); }
 
-        /* --- GAYA BARU UNTUK LOGO KLIEN --- */
-        .client-box {
-            transition: all 0.3s ease;
-        }
-        .client-box:hover {
-            transform: translateY(-5px);
-            border-color: #4A6D6D; /* Warna Teal saat hover */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        /* Efek Grayscale untuk gambar logo klien */
-        .client-img {
-            max-width: 85%; /* Agar tidak terlalu penuh */
-            max-height: 65px; /* Batasi tinggi agar seragam */
-            filter: grayscale(100%) opacity(0.6); /* Efek abu-abu transparan */
-            transition: all 0.3s ease;
-        }
-        /* Saat kotaknya di-hover, gambarnya jadi berwarna */
-        .client-box:hover .client-img {
-            filter: grayscale(0%) opacity(1);
-            transform: scale(1.05); /* Sedikit membesar */
-        }
+        /* === NEW CLIENT LOGO STYLING === */
+        .client-logo-container { transition: all 0.3s ease; }
+        .client-logo-container:hover { border-color: #4A6D6D; transform: translateY(-3px); box-shadow: 0 10px 20px -10px rgba(74, 109, 109, 0.2); }
+        /* Gambar dibuat hitam putih dan agak transparan */
+        .client-logo-img { filter: grayscale(100%) opacity(0.6); transition: all 0.3s ease; mix-blend-mode: multiply; }
+        /* Saat dihover, gambar jadi berwarna dan jelas */
+        .client-logo-container:hover .client-logo-img { filter: grayscale(0%) opacity(1); transform: scale(1.05); }
     </style>
 </head>
 <body>
@@ -167,15 +153,19 @@
             <div class="text-center mb-20">
                 <span class="text-abi-teal text-xs font-bold uppercase tracking-[0.3em] mb-8 block">Proudly Part Of</span>
                 <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20">
+                    
                     <div class="group cursor-pointer">
                         <img src="PII.png" alt="Persatuan Insinyur Indonesia" class="org-logo h-24 md:h-28 w-auto object-contain">
                     </div>
+
                     <div class="group cursor-pointer">
                         <img src="IAI.png" alt="Ikatan Arsitek Indonesia" class="org-logo h-20 md:h-24 w-auto object-contain">
                     </div>
+
                     <div class="group cursor-pointer">
                         <img src="HIPMI.png" alt="Himpunan Pengusaha Muda Indonesia" class="org-logo h-20 md:h-24 w-auto object-contain">
                     </div>
+
                 </div>
             </div>
 
@@ -185,37 +175,38 @@
                 <h3 class="text-2xl md:text-3xl font-light mb-4">Dipercaya oleh <span class="font-bold">Pemimpin Industri</span></h3>
                 <p class="text-gray-400 text-sm mb-12">Portofolio kolaborasi kami dengan berbagai korporasi terkemuka.</p>
                 
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                     
-                    <div class="client-box bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-28 cursor-pointer">
-                        <img src="client-1.png" alt="Paramount Land" class="client-img object-contain">
+                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28 cursor-pointer">
+                        <img src="paramount.png" alt="Paramount Land" class="client-logo-img max-h-14 w-auto object-contain" onerror="this.style.display='none';this.parentNode.innerText='Paramount Land';this.parentNode.classList.add('text-gray-400','font-bold','text-sm');">
                     </div>
-                    <div class="client-box bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-28 cursor-pointer">
-                        <img src="client-2.png" alt="Alam Sutera Sawangan" class="client-img object-contain">
+                    
+                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28 cursor-pointer">
+                        <img src="alamsutera.png" alt="Alam Sutera Sawangan" class="client-logo-img max-h-16 w-auto object-contain" onerror="this.style.display='none';this.parentNode.innerText='Alam Sutera';this.parentNode.classList.add('text-gray-400','font-bold','text-sm');">
                     </div>
-                    <div class="client-box bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-28 cursor-pointer">
-                        <img src="client-3.png" alt="Summarecon Mall Serpong" class="client-img object-contain">
+                    
+                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28 cursor-pointer">
+                        <img src="summarecon.png" alt="Summarecon Mall Serpong" class="client-logo-img max-h-14 w-auto object-contain" onerror="this.style.display='none';this.parentNode.innerText='Summarecon';this.parentNode.classList.add('text-gray-400','font-bold','text-sm');">
                     </div>
-                    <div class="client-box bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-28 cursor-pointer">
-                        <img src="client-4.png" alt="PT. Protera" class="client-img object-contain">
+                    
+                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28 cursor-pointer">
+                        <img src="protera.png" alt="PT. Protera" class="client-logo-img max-h-14 w-auto object-contain" onerror="this.style.display='none';this.parentNode.innerText='Protera';this.parentNode.classList.add('text-gray-400','font-bold','text-sm');">
                     </div>
-                    <div class="client-box bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-28 cursor-pointer">
-                        <img src="client-5.png" alt="PT. Prima Pool" class="client-img object-contain">
+                    
+                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28 cursor-pointer">
+                        <img src="primapool.png" alt="PT. Prima Pool" class="client-logo-img max-h-16 w-auto object-contain" onerror="this.style.display='none';this.parentNode.innerText='Prima Pool';this.parentNode.classList.add('text-gray-400','font-bold','text-sm');">
                     </div>
-                    <div class="client-box bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-28 cursor-pointer">
-                        <img src="client-6.png" alt="PT. Vista Land Group" class="client-img object-contain">
+                    
+                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28 cursor-pointer">
+                        <img src="vistaland.png" alt="PT. Vista Land Group" class="client-logo-img max-h-16 w-auto object-contain" onerror="this.style.display='none';this.parentNode.innerText='Vista Land';this.parentNode.classList.add('text-gray-400','font-bold','text-sm');">
                     </div>
-                    <div class="client-box bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-28 cursor-pointer">
-                        <img src="client-7.png" alt="PT. Flame" class="client-img object-contain">
+                    
+                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28 cursor-pointer">
+                        <img src="flame.png" alt="PT. Flame" class="client-logo-img max-h-14 w-auto object-contain" onerror="this.style.display='none';this.parentNode.innerText='PT. Flame';this.parentNode.classList.add('text-gray-400','font-bold','text-sm');">
                     </div>
-                    <div class="client-box bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-28 cursor-pointer">
-                        <img src="client-8.png" alt="PT. Sinar Mandiri Sentosa" class="client-img object-contain">
-                    </div>
-                    <div class="client-box bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-28 cursor-pointer">
-                        <img src="client-9.png" alt="PT. Deka Media" class="client-img object-contain">
-                    </div>
-                    <div class="client-box bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-28 cursor-pointer">
-                        <img src="client-10.png" alt="PT. Sumber Praline Utama" class="client-img object-contain">
+                    
+                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28 cursor-pointer">
+                        <img src="sinarmandiri.png" alt="PT. Sinar Mandiri Sentosa" class="client-logo-img max-h-16 w-auto object-contain" onerror="this.style.display='none';this.parentNode.innerText='Sinar Mandiri';this.parentNode.classList.add('text-gray-400','font-bold','text-sm');">
                     </div>
 
                 </div>
@@ -311,7 +302,7 @@
 
                 <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 group cursor-pointer border border-gray-100 flex flex-col h-full" onclick="window.location.href='blog.html'">
                     <div class="relative overflow-hidden h-56 flex-shrink-0">
-                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-100 transition duration-700">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
                         <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-abi-dark shadow-sm">Inspirasi</div>
                     </div>
                     <div class="p-8 flex flex-col flex-grow">
