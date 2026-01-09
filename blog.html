@@ -20,7 +20,7 @@
                 }
             }
         }
-        
+
         // KONFIGURASI FIREBASE
         const firebaseConfig = {
             apiKey: "AIzaSyC9JW1Rc3VFnJRYofHiorqDN4MWHjBrVi0",
@@ -89,88 +89,95 @@
     <section class="py-16 px-6">
         <div class="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
             
-            <div class="lg:col-span-2 space-y-8">
-
-                <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row group">
-    <div class="md:w-2/5 h-64 md:h-auto relative overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1590644365607-1c5a519a7a37?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
-    </div>
-    <div class="md:w-3/5 p-8 flex flex-col justify-center">
-        <div class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-wider text-abi-teal">Material • 9 Jan 2026</div>
-        <h2 onclick="fetchArticle('article7')" class="text-2xl font-bold mb-3 text-abi-dark hover:text-abi-teal cursor-pointer transition">Bata Merah vs Hebel: Mana yang Lebih Cocok untuk Rumah di Jabodetabek?</h2>
-        <p class="text-gray-500 text-sm leading-relaxed mb-6">Jangan asal pilih dinding hanya karena ikut-ikutan tren. Simak perbandingan biaya, ketahanan panas, hingga kecepatan pasang untuk proyek Anda.</p>
-        <button onclick="fetchArticle('article7')" class="text-sm font-bold border-b border-gray-300 pb-1 self-start hover:border-abi-teal hover:text-abi-teal transition">Baca Selengkapnya</button>
-    </div>
-</article>
-
-                <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row group">
-    <div class="md:w-2/5 h-64 md:h-auto relative overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
-    </div>
-    <div class="md:w-3/5 p-8 flex flex-col justify-center">
-        <div class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-wider text-abi-teal">Masalah Sipil • 8 Jan 2026</div>
-        <h2 onclick="fetchArticle('article6')" class="text-2xl font-bold mb-3 text-abi-dark hover:text-abi-teal cursor-pointer transition">Tembok Rembes Saat Musim Hujan? Ini Cara Permanen Mengatasinya!</h2>
-        <p class="text-gray-500 text-sm leading-relaxed mb-6">Jangan cuma dicat ulang, kenali penyebab air masuk ke pori-pori dinding Anda. Solusi tepat mulai dari perbaikan talang hingga suntik waterproofing.</p>
-        <button onclick="fetchArticle('article6')" class="text-sm font-bold border-b border-gray-300 pb-1 self-start hover:border-abi-teal hover:text-abi-teal transition">Baca Selengkapnya</button>
-    </div>
-</article>
-
-                <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row group">
-    <div class="md:w-2/5 h-64 md:h-auto relative overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
-    </div>
-    <div class="md:w-3/5 p-8 flex flex-col justify-center">
-        <div class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-wider text-abi-teal">Tips Renovasi • 7 Jan 2026</div>
-        <h2 onclick="fetchArticle('article5')" class="text-2xl font-bold mb-3 text-abi-dark hover:text-abi-teal cursor-pointer transition">Renovasi Hemat: Ubah Tampilan Rumah Tanpa Bongkar Tembok!</h2>
-        <p class="text-gray-500 text-sm leading-relaxed mb-6">Bosan dengan suasana rumah tapi budget terbatas? Simak trik cerdas memperbarui estetika ruang hanya dengan permainan warna dan pencahayaan.</p>
-        <button onclick="fetchArticle('article5')" class="text-sm font-bold border-b border-gray-300 pb-1 self-start hover:border-abi-teal hover:text-abi-teal transition">Baca Selengkapnya</button>
-    </div>
-</article>
+            <div class="lg:col-span-2 space-y-8" id="articleContainer">
                 
-                <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row group">
-    <div class="md:w-2/5 h-64 md:h-auto relative overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
-    </div>
-    <div class="md:w-3/5 p-8 flex flex-col justify-center">
-        <div class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-wider text-abi-teal">Interior • 6 Jan 2026</div>
-        <h2 onclick="fetchArticle('article4')" class="text-2xl font-bold mb-3 text-abi-dark hover:text-abi-teal cursor-pointer transition">Solusi Lahan Sempit: Trik Mezzanine Agar Rumah 36m² Terasa Luas</h2>
-        <p class="text-gray-500 text-sm leading-relaxed mb-6">Membangun ke atas tanpa menambah lantai penuh adalah kunci efisiensi biaya. Pelajari cara memanfaatkan high ceiling untuk ruang kerja atau kamar tidur tambahan.</p>
-        <button onclick="fetchArticle('article4')" class="text-sm font-bold border-b border-gray-300 pb-1 self-start hover:border-abi-teal hover:text-abi-teal transition">Baca Selengkapnya</button>
-    </div>
-</article>
+                <div id="noResults" class="hidden text-center py-12 bg-gray-50 rounded-2xl border border-dashed border-gray-300">
+                    <i class="fas fa-search text-4xl text-gray-300 mb-4"></i>
+                    <p class="text-gray-500 font-bold">Artikel tidak ditemukan.</p>
+                    <p class="text-xs text-gray-400">Coba kata kunci lain.</p>
+                    <button onclick="clearSearch()" class="mt-4 text-abi-teal text-xs font-bold uppercase tracking-widest border-b border-abi-teal">Reset Pencarian</button>
+                </div>
+
+                <article class="blog-item bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row group" data-title="Bata Merah vs Hebel: Mana yang Lebih Cocok untuk Rumah di Jabodetabek?">
+                    <div class="md:w-2/5 h-64 md:h-auto relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1590644365607-1c5a519a7a37?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="md:w-3/5 p-8 flex flex-col justify-center">
+                        <div class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-wider text-abi-teal">Material • 9 Jan 2026</div>
+                        <h2 onclick="fetchArticle('article7')" class="text-2xl font-bold mb-3 text-abi-dark hover:text-abi-teal cursor-pointer transition">Bata Merah vs Hebel: Mana yang Lebih Cocok untuk Rumah di Jabodetabek?</h2>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Simak perbandingan biaya, ketahanan panas, hingga kecepatan pasang.</p>
+                        <button onclick="fetchArticle('article7')" class="text-sm font-bold border-b border-gray-300 pb-1 self-start hover:border-abi-teal hover:text-abi-teal transition">Baca Selengkapnya</button>
+                    </div>
+                </article>
+
+                <article class="blog-item bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row group" data-title="Tembok Rembes Saat Musim Hujan? Ini Cara Permanen Mengatasinya!">
+                    <div class="md:w-2/5 h-64 md:h-auto relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="md:w-3/5 p-8 flex flex-col justify-center">
+                        <div class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-wider text-abi-teal">Masalah Sipil • 8 Jan 2026</div>
+                        <h2 onclick="fetchArticle('article6')" class="text-2xl font-bold mb-3 text-abi-dark hover:text-abi-teal cursor-pointer transition">Tembok Rembes Saat Musim Hujan? Ini Cara Permanen Mengatasinya!</h2>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Kenali penyebab air masuk ke pori-pori dinding Anda dan solusinya.</p>
+                        <button onclick="fetchArticle('article6')" class="text-sm font-bold border-b border-gray-300 pb-1 self-start hover:border-abi-teal hover:text-abi-teal transition">Baca Selengkapnya</button>
+                    </div>
+                </article>
+
+                <article class="blog-item bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row group" data-title="Renovasi Hemat: Ubah Tampilan Rumah Tanpa Bongkar Tembok!">
+                    <div class="md:w-2/5 h-64 md:h-auto relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="md:w-3/5 p-8 flex flex-col justify-center">
+                        <div class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-wider text-abi-teal">Tips Renovasi • 7 Jan 2026</div>
+                        <h2 onclick="fetchArticle('article5')" class="text-2xl font-bold mb-3 text-abi-dark hover:text-abi-teal cursor-pointer transition">Renovasi Hemat: Ubah Tampilan Rumah Tanpa Bongkar Tembok!</h2>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Simak trik cerdas memperbarui estetika ruang hanya dengan permainan warna.</p>
+                        <button onclick="fetchArticle('article5')" class="text-sm font-bold border-b border-gray-300 pb-1 self-start hover:border-abi-teal hover:text-abi-teal transition">Baca Selengkapnya</button>
+                    </div>
+                </article>
                 
-                 <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row group">
+                <article class="blog-item bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row group" data-title="Solusi Lahan Sempit: Trik Mezzanine Agar Rumah 36m² Terasa Luas">
+                    <div class="md:w-2/5 h-64 md:h-auto relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="md:w-3/5 p-8 flex flex-col justify-center">
+                        <div class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-wider text-abi-teal">Interior • 6 Jan 2026</div>
+                        <h2 onclick="fetchArticle('article4')" class="text-2xl font-bold mb-3 text-abi-dark hover:text-abi-teal cursor-pointer transition">Solusi Lahan Sempit: Trik Mezzanine Agar Rumah 36m² Terasa Luas</h2>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Membangun ke atas tanpa menambah lantai penuh adalah kunci efisiensi biaya.</p>
+                        <button onclick="fetchArticle('article4')" class="text-sm font-bold border-b border-gray-300 pb-1 self-start hover:border-abi-teal hover:text-abi-teal transition">Baca Selengkapnya</button>
+                    </div>
+                </article>
+
+                <article class="blog-item bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row group" data-title="Ciri-ciri Pondasi Rumah yang Kuat & Tahan Gempa">
                     <div class="md:w-2/5 h-64 md:h-auto relative overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1581094794329-cd13693dd462?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="md:w-3/5 p-8 flex flex-col justify-center">
                         <div class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-wider text-abi-teal">Tips Sipil • 5 Jan 2026</div>
                         <h2 onclick="fetchArticle('article1')" class="text-2xl font-bold mb-3 text-abi-dark hover:text-abi-teal cursor-pointer transition">Ciri-ciri Pondasi Rumah yang Kuat & Tahan Gempa</h2>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Simak 5 hal wajib yang harus dicek saat pembuatan pondasi cakar ayam agar rumah aman.</p>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Simak 5 hal wajib yang harus dicek saat pembuatan pondasi cakar ayam.</p>
                         <button onclick="fetchArticle('article1')" class="text-sm font-bold border-b border-gray-300 pb-1 self-start hover:border-abi-teal hover:text-abi-teal transition">Baca Selengkapnya</button>
                     </div>
                 </article>
 
-                <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row group">
+                <article class="blog-item bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row group" data-title="Hitungan Biaya Ngedak Lantai 2 (Beton vs Bondek)">
                     <div class="md:w-2/5 h-64 md:h-auto relative overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="md:w-3/5 p-8 flex flex-col justify-center">
                         <div class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-wider text-abi-teal">Renovasi • 2 Jan 2026</div>
                         <h2 onclick="fetchArticle('article2')" class="text-2xl font-bold mb-3 text-abi-dark hover:text-abi-teal cursor-pointer transition">Hitungan Biaya Ngedak Lantai 2 (Beton vs Bondek)</h2>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Bingung pilih metode cor dak? Kami bedah perbandingan biaya dan kekuatan antara metode konvensional dan bondek.</p>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Hitungan real per meter persegi untuk dak beton konvensional vs bondek.</p>
                         <button onclick="fetchArticle('article2')" class="text-sm font-bold border-b border-gray-300 pb-1 self-start hover:border-abi-teal hover:text-abi-teal transition">Baca Selengkapnya</button>
                     </div>
                 </article>
 
-                <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row group">
+                <article class="blog-item bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row group" data-title="Trend Interior Minimalis Industrial 2026">
                     <div class="md:w-2/5 h-64 md:h-auto relative overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="md:w-3/5 p-8 flex flex-col justify-center">
                         <div class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-wider text-abi-teal">Inspirasi • 28 Des 2025</div>
-                        <h2 onclick="fetchArticle('article3')" class="text-2xl font-bold mb-3 text-abi-dark hover:text-abi-teal cursor-pointer transition">Trend Interior Industrial: Hemat tapi Mewah</h2>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Penerapan dinding unfinished dan plafon ekspos yang justru menaikkan nilai estetika rumah Anda.</p>
+                        <h2 onclick="fetchArticle('article3')" class="text-2xl font-bold mb-3 text-abi-dark hover:text-abi-teal cursor-pointer transition">Trend Interior Minimalis Industrial 2026</h2>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Perpaduan beton ekspos dan kayu solid yang bikin rumah terlihat mewah.</p>
                         <button onclick="fetchArticle('article3')" class="text-sm font-bold border-b border-gray-300 pb-1 self-start hover:border-abi-teal hover:text-abi-teal transition">Baca Selengkapnya</button>
                     </div>
                 </article>
@@ -178,6 +185,27 @@
             </div>
 
             <div class="space-y-8">
+                
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 sticky top-24">
+                    <h4 class="font-bold mb-4 text-abi-dark">Cari Artikel</h4>
+                    <div class="relative">
+                        <input type="text" id="blogSearchInput" onkeyup="filterArticles()" placeholder="Ketik kata kunci..." class="w-full bg-gray-50 border border-gray-200 rounded-lg pl-4 pr-12 py-3 text-sm focus:outline-none focus:border-abi-teal transition">
+                        <button onclick="filterArticles()" class="absolute right-2 top-1.5 w-9 h-9 bg-abi-teal text-white rounded-md hover:bg-abi-dark transition flex items-center justify-center">
+                            <i class="fas fa-search text-xs"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="mt-8 pt-8 border-t border-gray-100">
+                        <h4 class="font-bold mb-4 text-abi-dark">Topik Populer</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span onclick="quickSearch('Renovasi')" class="cursor-pointer px-3 py-1 bg-gray-100 text-xs text-gray-600 rounded-full hover:bg-abi-teal hover:text-white transition">Renovasi</span>
+                            <span onclick="quickSearch('Interior')" class="cursor-pointer px-3 py-1 bg-gray-100 text-xs text-gray-600 rounded-full hover:bg-abi-teal hover:text-white transition">Interior</span>
+                            <span onclick="quickSearch('Sipil')" class="cursor-pointer px-3 py-1 bg-gray-100 text-xs text-gray-600 rounded-full hover:bg-abi-teal hover:text-white transition">Sipil</span>
+                            <span onclick="quickSearch('Material')" class="cursor-pointer px-3 py-1 bg-gray-100 text-xs text-gray-600 rounded-full hover:bg-abi-teal hover:text-white transition">Material</span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="bg-abi-dark p-8 rounded-2xl shadow-lg text-center relative overflow-hidden group">
                     <div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800')] bg-cover bg-center transition transform group-hover:scale-110 duration-700"></div>
                     <div class="relative z-10">
@@ -215,9 +243,7 @@
             </div>
 
             <div class="p-8 md:p-12 overflow-y-auto bg-white flex-grow">
-                <div id="modalBlogContent" class="article-prose text-gray-600">
-                    </div>
-                
+                <div id="modalBlogContent" class="article-prose text-gray-600"></div>
                 <div class="mt-12 pt-8 border-t border-gray-100 text-center">
                     <p class="font-bold text-abi-dark mb-4">Tertarik menerapkan konsep ini?</p>
                     <a href="paket.html" class="inline-block bg-abi-teal text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-abi-dark transition">Hubungi Kami</a>
@@ -231,34 +257,77 @@
             document.getElementById('mobileMenu').classList.toggle('hidden');
         }
 
-        // --- FUNGSI AMBIL DATA DARI FIREBASE ---
+        // --- FUNGSI SEARCH (FILTER DOM) ---
+        function filterArticles() {
+            const input = document.getElementById('blogSearchInput').value.toLowerCase();
+            const articles = document.querySelectorAll('.blog-item');
+            const noResults = document.getElementById('noResults');
+            let hasResult = false;
+
+            articles.forEach(article => {
+                const title = article.getAttribute('data-title').toLowerCase();
+                // Kita juga bisa cari di deskripsi jika mau, tapi judul biasanya cukup
+                if (title.includes(input)) {
+                    article.style.display = 'flex'; // Munculkan (sesuai layout flex)
+                    hasResult = true;
+                } else {
+                    article.style.display = 'none'; // Sembunyikan
+                }
+            });
+
+            // Tampilkan pesan jika tidak ada hasil
+            if (hasResult) {
+                noResults.classList.add('hidden');
+            } else {
+                noResults.classList.remove('hidden');
+            }
+        }
+
+        // Fungsi Helper untuk Quick Search (Tags)
+        function quickSearch(keyword) {
+            document.getElementById('blogSearchInput').value = keyword;
+            filterArticles();
+        }
+
+        function clearSearch() {
+            document.getElementById('blogSearchInput').value = '';
+            filterArticles();
+        }
+
+        // --- CEK URL DARI INDEX.HTML ---
+        window.onload = function() {
+            // Cek apakah ada ?search=... di URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchParam = urlParams.get('search');
+            
+            if(searchParam) {
+                // Jika ada, isi kotak search dan jalankan filter otomatis
+                document.getElementById('blogSearchInput').value = searchParam;
+                filterArticles();
+            }
+        }
+
+        // --- FUNGSI FIREBASE ---
         function fetchArticle(docId) {
-            // 1. Tampilkan Modal & Loading
             const modal = document.getElementById('articleModal');
             const loader = document.getElementById('loadingView');
             modal.style.display = 'flex';
-            loader.style.display = 'flex'; // Munculkan loading
+            loader.style.display = 'flex';
             document.body.style.overflow = 'hidden';
 
-            // 2. Request ke Database
             db.collection("articles").doc(docId).get().then((doc) => {
                 if (doc.exists) {
                     const data = doc.data();
-                    
-                    // 3. Masukkan Data ke HTML
                     document.getElementById('modalBlogTitle').innerText = data.judul;
                     document.getElementById('modalBlogDate').innerText = data.tanggal;
                     document.getElementById('modalBlogImg').src = data.gambar;
-                    document.getElementById('modalBlogContent').innerHTML = data.konten; // Render HTML
+                    document.getElementById('modalBlogContent').innerHTML = data.konten;
                 } else {
                     document.getElementById('modalBlogContent').innerHTML = "<p class='text-center text-red-500'>Maaf, artikel tidak ditemukan.</p>";
                 }
-                
-                // 4. Matikan Loading
                 loader.style.display = 'none';
-
             }).catch((error) => {
-                console.log("Error getting document:", error);
+                console.log("Error:", error);
                 document.getElementById('modalBlogContent').innerHTML = "<p>Terjadi kesalahan koneksi.</p>";
                 loader.style.display = 'none';
             });
