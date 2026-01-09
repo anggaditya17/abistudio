@@ -45,12 +45,10 @@
         .org-logo { filter: grayscale(100%) opacity(0.7); transition: all 0.4s ease; mix-blend-mode: multiply; }
         .org-logo:hover { filter: grayscale(0%) opacity(1); transform: scale(1.1); }
 
-        /* === NEW CLIENT LOGO STYLING === */
+        /* Client Logo Styling */
         .client-logo-container { transition: all 0.3s ease; }
         .client-logo-container:hover { border-color: #4A6D6D; transform: translateY(-3px); box-shadow: 0 10px 20px -10px rgba(74, 109, 109, 0.2); }
-        /* Gambar dibuat hitam putih dan agak transparan */
         .client-logo-img { filter: grayscale(100%) opacity(0.6); transition: all 0.3s ease; mix-blend-mode: multiply; }
-        /* Saat dihover, gambar jadi berwarna dan jelas */
         .client-logo-container:hover .client-logo-img { filter: grayscale(0%) opacity(1); transform: scale(1.05); }
     </style>
 </head>
@@ -112,14 +110,18 @@
     <section class="py-24 bg-white px-6">
         <div class="container mx-auto">
             <div class="grid md:grid-cols-2 gap-16 mb-24">
+                
                 <div>
-                    <span class="text-abi-teal text-sm font-bold uppercase tracking-[0.3em] block mb-6">Company Profile</span>
-                    <h3 class="text-3xl md:text-5xl font-light leading-tight mb-8">Visi kami adalah menjadi perusahaan terkemuka dengan standar kualitas tertinggi.</h3>
+                    <span class="text-abi-teal text-sm font-bold uppercase tracking-[0.3em] block mb-6">Our Vision</span>
+                    <h3 class="text-3xl md:text-5xl font-light leading-tight mb-8">
+                        Mewujudkan hunian Anda menjadi <span class="font-bold text-abi-teal">tempat pulang paling nyaman</span>.
+                    </h3>
                     <p class="text-gray-600 leading-relaxed mb-8 text-lg font-light text-justify">
-                        ABI STUDIO hadir dengan kombinasi unik antara perencanaan detail, perhitungan presisi, dan layanan interior. Misi kami adalah memberikan pengalaman transformatif melalui keunggulan layanan desain dan konstruksi.
+                        Visi kami bukan sekadar membangun gedung, tapi menyatukan kebutuhan Anda menjadi pengalaman tak terlupakan dalam hunian yang nyaman. ABI STUDIO hadir untuk mengubah ruang biasa menjadi tempat di mana kenangan indah tercipta.
                     </p>
                     <a href="about.html" class="text-abi-teal text-sm font-bold uppercase tracking-widest border-b-2 border-abi-teal pb-1 hover:text-black hover:border-black transition">Baca Selengkapnya</a>
                 </div>
+                
                 <div class="grid grid-cols-1 gap-8">
                     <h4 class="text-3xl font-bold border-b pb-4">Our Leadership</h4>
                     <div class="team-card flex items-center space-x-6 bg-gray-50 p-8 rounded-2xl transition duration-500 cursor-pointer border border-gray-100 shadow-sm">
@@ -129,7 +131,7 @@
                         <div>
                             <h5 class="text-xl font-bold">Ir. Rama Ganeza, ST., MPr.</h5>
                             <p class="text-xs uppercase tracking-widest text-abi-teal font-bold mt-1">Founder & CEO</p>
-                            <p class="text-sm text-gray-500 mt-2">Ahli konstruksi dan manajemen proyek.</p>
+                            <p class="text-sm text-gray-500 mt-2 italic">Construction Specialist & Project Lead</p>
                         </div>
                     </div>
                     <div class="team-card flex items-center space-x-6 bg-gray-50 p-8 rounded-2xl transition duration-500 cursor-pointer border border-gray-100 shadow-sm">
@@ -138,8 +140,8 @@
                         </div>
                         <div>
                             <h5 class="text-xl font-bold">Angga Aditya Pratama, SE.</h5>
-                            <p class="text-xs uppercase tracking-widest text-abi-teal font-bold mt-1">Co-Founder & Head of Marketing</p>
-                            <p class="text-sm text-gray-500 mt-2">Strategi bisnis dan hubungan klien.</p>
+                            <p class="text-xs uppercase tracking-widest text-abi-teal font-bold mt-1">Co-Founder & Business Director</p>
+                            <p class="text-sm text-gray-500 mt-2 italic">Business Research & Development</p>
                         </div>
                     </div>
                 </div>
@@ -353,7 +355,7 @@
                         <i class="fab fa-whatsapp mr-4 text-2xl"></i>
                         <div>
                             <p class="font-bold text-base">Angga Aditya Pratama, SE</p>
-                            <p class="text-sm">Co-Founder & Head of Marketing</p>
+                            <p class="text-sm">Co-Founder & Business Director</p>
                             <p class="text-sm mt-1">0851-5757-7465</p>
                         </div>
                     </div>
