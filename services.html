@@ -26,6 +26,15 @@
         .service-card:hover .service-img { transform: scale(1.1); }
         .service-card:hover .service-icon { background-color: #4A6D6D; color: white; border-color: #4A6D6D; }
         .safe-bottom { padding-bottom: calc(20px + env(safe-area-inset-bottom)); }
+        
+        /* Modal Animation */
+        .modal-overlay { display: none; }
+        .modal-overlay.active { display: flex; }
+        .animate-pop { animation: popIn 0.3s ease-out forwards; }
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
     </style>
 </head>
 <body class="bg-white flex flex-col min-h-screen">
@@ -63,7 +72,11 @@
         <div class="relative z-10">
             <p class="text-xs font-bold uppercase tracking-[0.4em] text-abi-teal mb-4">Our Expertise</p>
             <h1 class="text-4xl md:text-6xl font-light mb-6">Lingkup Layanan</h1>
-            <p class="text-gray-300 font-light max-w-2xl mx-auto">Solusi terintegrasi mulai dari konsep desain, pelaksanaan konstruksi, hingga konsultasi legalitas.</p>
+            <p class="text-gray-300 font-light max-w-2xl mx-auto mb-8">Solusi terintegrasi mulai dari konsep desain, pelaksanaan konstruksi, hingga konsultasi legalitas.</p>
+            
+            <button onclick="toggleFlowModal()" class="bg-white/10 backdrop-blur-sm border border-abi-teal text-abi-teal px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-abi-teal hover:text-white transition duration-300 flex items-center mx-auto gap-3">
+                <i class="fas fa-info-circle"></i> Lihat Alur Pemesanan
+            </button>
         </div>
     </header>
 
@@ -78,6 +91,9 @@
                 <div onclick="goToPackage('arsitek')" class="service-card group bg-gray-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500 cursor-pointer border border-gray-100">
                     <div class="h-56 overflow-hidden relative">
                          
+
+[Image of architectural blueprints on table]
+
                         <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800" onerror="this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800'" class="service-img w-full h-full object-cover transition duration-700">
                     </div>
                     <div class="p-8 relative">
@@ -335,6 +351,62 @@
         <p class="opacity-50 uppercase tracking-[0.2em]">© 2026 ABI STUDIO. All Rights Reserved.</p>
     </footer>
 
+    <div id="flowModal" class="modal-overlay fixed inset-0 bg-black/70 z-[9999] items-center justify-center p-4">
+        <div class="bg-white w-full max-w-4xl rounded-2xl relative animate-pop max-h-[90vh] overflow-y-auto">
+            <button onclick="toggleFlowModal()" class="absolute top-4 right-4 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 text-xl transition">×</button>
+            
+            <div class="p-8 md:p-12">
+                <div class="text-center mb-10">
+                    <span class="text-abi-teal text-xs font-bold uppercase tracking-[0.2em]">Workflow</span>
+                    <h3 class="text-3xl font-bold text-abi-dark mt-2">Alur Pemesanan Jasa</h3>
+                    <div class="w-16 h-1 bg-abi-teal mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center hover:shadow-lg transition">
+                        <div class="w-12 h-12 bg-white text-abi-teal rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm border border-gray-200 font-bold text-lg">1</div>
+                        <h4 class="font-bold text-gray-800 mb-2">Konsultasi Awal</h4>
+                        <p class="text-sm text-gray-500">Diskusi kebutuhan, budget, dan konsep awal proyek Anda via WA atau pertemuan.</p>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center hover:shadow-lg transition">
+                        <div class="w-12 h-12 bg-white text-abi-teal rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm border border-gray-200 font-bold text-lg">2</div>
+                        <h4 class="font-bold text-gray-800 mb-2">Survei & Data</h4>
+                        <p class="text-sm text-gray-500">Tim kami melakukan survei lokasi dan pengukuran untuk data teknis yang akurat.</p>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center hover:shadow-lg transition">
+                        <div class="w-12 h-12 bg-white text-abi-teal rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm border border-gray-200 font-bold text-lg">3</div>
+                        <h4 class="font-bold text-gray-800 mb-2">Desain & RAB</h4>
+                        <p class="text-sm text-gray-500">Pembuatan desain pra-rencana dan penawaran biaya (RAB) sesuai spesifikasi.</p>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center hover:shadow-lg transition">
+                        <div class="w-12 h-12 bg-white text-abi-teal rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm border border-gray-200 font-bold text-lg">4</div>
+                        <h4 class="font-bold text-gray-800 mb-2">SPK & Kontrak</h4>
+                        <p class="text-sm text-gray-500">Kesepakatan kerja, penandatanganan kontrak, dan pembayaran termin pertama (DP).</p>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center hover:shadow-lg transition">
+                        <div class="w-12 h-12 bg-white text-abi-teal rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm border border-gray-200 font-bold text-lg">5</div>
+                        <h4 class="font-bold text-gray-800 mb-2">Pelaksanaan</h4>
+                        <p class="text-sm text-gray-500">Pengerjaan proyek sesuai jadwal (Time Schedule) dengan laporan progres berkala.</p>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center hover:shadow-lg transition">
+                        <div class="w-12 h-12 bg-abi-teal text-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm font-bold text-lg"><i class="fas fa-check"></i></div>
+                        <h4 class="font-bold text-gray-800 mb-2">Serah Terima</h4>
+                        <p class="text-sm text-gray-500">Final check, serah terima kunci/hasil pekerjaan, dan masa retensi (garansi).</p>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-10">
+                    <button onclick="toggleFlowModal()" class="bg-abi-dark text-white px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-abi-teal transition">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         function toggleMobileMenu() {
             document.getElementById('mobileMenu').classList.toggle('hidden');
@@ -342,6 +414,27 @@
 
         function goToPackage(type) {
             window.location.href = `paket.html?service=${type}`;
+        }
+
+        // Logic Pop-up Alur Kerja
+        function toggleFlowModal() {
+            const modal = document.getElementById('flowModal');
+            modal.classList.toggle('active');
+            
+            // Prevent scrolling when modal is open
+            if(modal.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal when clicking outside content
+        window.onclick = function(e) {
+            const modal = document.getElementById('flowModal');
+            if(e.target == modal) {
+                toggleFlowModal();
+            }
         }
     </script>
 
