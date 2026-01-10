@@ -3,16 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jasa Arsitek, Desain Rumah, & Hitung RAB Profesional di Tangerang. Paket hemat mulai Rp 7.000/m². Melayani Jabodetabek. Konsultasi Gratis!">
-    <meta name="keywords" content="Jasa Arsitek Tangerang, Jasa Desain Rumah Murah, Jasa Hitung RAB, Jasa Gambar IMB, Arsitek Poris Cipondoh, Biaya Desain Rumah per meter, ABI Studio">
-    <meta name="author" content="ABI STUDIO">
-
-    <meta property="og:title" content="ABI STUDIO | Jasa Arsitek & RAB Mulai 7rb/m²">
-    <meta property="og:description" content="Jangan bangun asal-asalan! Dapatkan desain presisi & RAB akurat agar budget tidak bengkak. Klik untuk lihat paket & portfolio.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800">
-    <meta property="og:url" content="https://abistudio.github.io/">
-    <meta property="og:type" content="website">
-
+    <meta name="description" content="Jasa Arsitek, Desain Rumah, & Hitung RAB Profesional di Tangerang. Paket hemat mulai Rp 7.000/m². Melayani Jabodetabek.">
+    
     <title>ABI STUDIO | Architect Building & Interior</title>
     <link rel="icon" type="image/png" href="logo.png">
     
@@ -42,15 +34,9 @@
         img { transition: transform 0.5s ease; }
         .group:hover img { transform: scale(1.05); }
         
-        /* Org Logo Styling */
-        .org-logo { filter: grayscale(100%) opacity(0.7); transition: all 0.4s ease; mix-blend-mode: multiply; }
-        .org-logo:hover { filter: grayscale(0%) opacity(1); transform: scale(1.1); }
-
-        /* Client Logo Styling */
-        .client-logo-container { transition: all 0.3s ease; }
-        .client-logo-container:hover { border-color: #4A6D6D; transform: translateY(-3px); box-shadow: 0 10px 20px -10px rgba(74, 109, 109, 0.2); }
-        .client-logo-img { filter: grayscale(100%) opacity(0.6); transition: all 0.3s ease; mix-blend-mode: multiply; }
-        .client-logo-container:hover .client-logo-img { filter: grayscale(0%) opacity(1); transform: scale(1.05); }
+        /* Language Switcher Style */
+        .lang-btn { cursor: pointer; font-weight: bold; padding: 0 5px; transition: color 0.3s; }
+        .lang-btn.active { color: #4A6D6D; border-bottom: 2px solid #4A6D6D; }
     </style>
 
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
@@ -78,14 +64,20 @@
             </a>
 
             <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-[0.15em] text-gray-700 items-center">
-                <a href="index.html" class="hover:text-abi-teal transition pb-1 text-abi-teal">Home</a>
-                <a href="about.html" class="hover:text-abi-teal transition pb-1">About</a>
-                <a href="services.html" class="hover:text-abi-teal transition pb-1">Layanan</a>
-                <a href="paket.html" class="hover:text-abi-teal transition pb-1">Paket</a>
-                <a href="portfolio.html" class="hover:text-abi-teal transition pb-1">Portfolio</a>
+                <a href="index.html" class="hover:text-abi-teal transition pb-1 text-abi-teal" data-i18n="nav_home">Home</a>
+                <a href="about.html" class="hover:text-abi-teal transition pb-1" data-i18n="nav_about">About</a>
+                <a href="services.html" class="hover:text-abi-teal transition pb-1" data-i18n="nav_services">Layanan</a>
+                <a href="paket.html" class="hover:text-abi-teal transition pb-1" data-i18n="nav_packages">Paket</a>
+                <a href="portfolio.html" class="hover:text-abi-teal transition pb-1" data-i18n="nav_portfolio">Portfolio</a>
                 <a href="blog.html" class="hover:text-abi-teal transition pb-1">Blog</a>
                 
-                <a href="https://wa.me/6285157577465" target="_blank" class="bg-abi-teal text-white px-6 py-2 rounded-full hover:bg-abi-dark transition duration-300 shadow-lg text-xs md:text-sm">Contact</a>
+                <a href="https://wa.me/6285157577465" target="_blank" class="bg-abi-teal text-white px-6 py-2 rounded-full hover:bg-abi-dark transition duration-300 shadow-lg text-xs md:text-sm" data-i18n="nav_contact">Contact</a>
+                
+                <div class="flex items-center border-l pl-4 border-gray-300 space-x-2">
+                    <span onclick="changeLanguage('id')" class="lang-btn active" id="btn-id">ID</span>
+                    <span class="text-gray-300">|</span>
+                    <span onclick="changeLanguage('en')" class="lang-btn" id="btn-en">EN</span>
+                </div>
             </div>
 
             <button class="md:hidden text-abi-teal text-2xl" onclick="toggleMobileMenu()">
@@ -95,13 +87,17 @@
 
         <div id="mobileMenu" class="hidden md:hidden absolute w-full bg-white text-black py-4 px-6 shadow-2xl border-t">
             <div class="flex flex-col space-y-4 text-sm font-bold uppercase tracking-widest text-center">
-                <a href="index.html" class="hover:text-abi-teal py-2">Home</a>
-                <a href="about.html" class="hover:text-abi-teal py-2">About Us</a>
-                <a href="services.html" class="hover:text-abi-teal py-2">Layanan</a>
-                <a href="paket.html" class="hover:text-abi-teal py-2">Paket</a>
-                <a href="portfolio.html" class="hover:text-abi-teal py-2">Portfolio</a>
+                <a href="index.html" class="hover:text-abi-teal py-2" data-i18n="nav_home">Home</a>
+                <a href="about.html" class="hover:text-abi-teal py-2" data-i18n="nav_about">About Us</a>
+                <a href="services.html" class="hover:text-abi-teal py-2" data-i18n="nav_services">Layanan</a>
+                <a href="paket.html" class="hover:text-abi-teal py-2" data-i18n="nav_packages">Paket</a>
+                <a href="portfolio.html" class="hover:text-abi-teal py-2" data-i18n="nav_portfolio">Portfolio</a>
                 <a href="blog.html" class="hover:text-abi-teal transition pb-1">Blog</a>
-                <a href="https://wa.me/6285157577465" target="_blank" class="bg-abi-teal text-white py-3 rounded-full mt-2">Contact Us</a>
+                
+                <div class="flex justify-center space-x-4 py-2 border-t border-b border-gray-100">
+                    <span onclick="changeLanguage('id')" class="cursor-pointer font-bold text-abi-teal">INDONESIA</span>
+                    <span onclick="changeLanguage('en')" class="cursor-pointer font-bold text-gray-400">ENGLISH</span>
+                </div>
             </div>
         </div>
     </nav>
@@ -110,15 +106,21 @@
         <div class="slide active flex items-center justify-center text-center px-6" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070');">
             <div class="slide-content max-w-5xl text-white pt-20">
                 <p class="text-sm md:text-base font-bold uppercase tracking-[0.4em] mb-6 text-abi-teal bg-white/90 inline-block px-6 py-2 rounded-full shadow-lg">Architect Building & Interior</p>
-                <h2 class="text-5xl md:text-7xl font-light mb-8 leading-tight">Mewujudkan Bangunan <br><span class="font-bold">Impian Anda.</span></h2>
-                <a href="paket.html" class="inline-block bg-abi-teal text-white px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition duration-300 shadow-xl transform hover:-translate-y-1">Lihat Paket</a>
+                <h2 class="text-5xl md:text-7xl font-light mb-8 leading-tight">
+                    <span data-i18n="hero_title_1">Mewujudkan Bangunan</span> <br>
+                    <span class="font-bold" data-i18n="hero_bold_1">Impian Anda.</span>
+                </h2>
+                <a href="paket.html" class="inline-block bg-abi-teal text-white px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition duration-300 shadow-xl transform hover:-translate-y-1" data-i18n="btn_check_package">Lihat Paket</a>
             </div>
         </div>
         <div class="slide flex items-center justify-center text-center px-6" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2070');">
             <div class="slide-content max-w-5xl text-white pt-20">
                 <p class="text-sm md:text-base font-bold uppercase tracking-[0.4em] mb-6 text-abi-teal bg-white/90 inline-block px-6 py-2 rounded-full shadow-lg">Integrated Solution</p>
-                <h2 class="text-5xl md:text-7xl font-light mb-8 leading-tight">Desain Presisi <br><span class="font-bold">Konstruksi Kokoh.</span></h2>
-                <a href="paket.html" class="inline-block bg-abi-teal text-white px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition duration-300 shadow-xl transform hover:-translate-y-1">Lihat Paket</a>
+                <h2 class="text-5xl md:text-7xl font-light mb-8 leading-tight">
+                    <span data-i18n="hero_title_2">Desain Presisi</span> <br>
+                    <span class="font-bold" data-i18n="hero_bold_2">Konstruksi Kokoh.</span>
+                </h2>
+                <a href="paket.html" class="inline-block bg-abi-teal text-white px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition duration-300 shadow-xl transform hover:-translate-y-1" data-i18n="btn_check_package">Lihat Paket</a>
             </div>
         </div>
     </section>
@@ -129,15 +131,15 @@
                 
                 <div>
                     <span class="text-abi-teal text-sm font-bold uppercase tracking-[0.3em] block mb-6">Company Profile</span>
-                    <h3 class="text-3xl md:text-5xl font-light leading-tight mb-8">Visi kami adalah menjadi perusahaan terkemuka dengan standar kualitas tertinggi.</h3>
-                    <p class="text-gray-600 leading-relaxed mb-8 text-lg font-light text-justify">
+                    <h3 class="text-3xl md:text-5xl font-light leading-tight mb-8" data-i18n="vision_title">Visi kami adalah menjadi perusahaan terkemuka dengan standar kualitas tertinggi.</h3>
+                    <p class="text-gray-600 leading-relaxed mb-8 text-lg font-light text-justify" data-i18n="vision_desc">
                         ABI STUDIO hadir dengan kombinasi unik antara perencanaan detail, perhitungan presisi, dan layanan interior. Misi kami adalah memberikan pengalaman transformatif melalui keunggulan layanan desain dan konstruksi yang terintegrasi.
                     </p>
-                    <a href="about.html" class="text-abi-teal text-sm font-bold uppercase tracking-widest border-b-2 border-abi-teal pb-1 hover:text-black hover:border-black transition">Baca Selengkapnya</a>
+                    <a href="about.html" class="text-abi-teal text-sm font-bold uppercase tracking-widest border-b-2 border-abi-teal pb-1 hover:text-black hover:border-black transition" data-i18n="read_more">Baca Selengkapnya</a>
                 </div>
                 
                 <div class="grid grid-cols-1 gap-8">
-                    <h4 class="text-3xl font-bold border-b pb-4">Our Leadership</h4>
+                    <h4 class="text-3xl font-bold border-b pb-4" data-i18n="leadership_title">Leadership Kami</h4>
                     <div class="team-card flex items-center space-x-6 bg-gray-50 p-8 rounded-2xl transition duration-500 cursor-pointer border border-gray-100 shadow-sm">
                         <div class="w-24 h-24 rounded-full bg-gray-300 overflow-hidden flex-shrink-0 border-2 border-abi-teal">
                             <img src="rama.jpg" class="w-full h-full object-cover">
@@ -145,7 +147,7 @@
                         <div>
                             <h5 class="text-xl font-bold">Ir. Rama Ganeza, ST., MPr.</h5>
                             <p class="text-xs uppercase tracking-widest text-abi-teal font-bold mt-1">Founder & CEO</p>
-                            <p class="text-sm text-gray-500 mt-2">Ahli konstruksi dan manajemen proyek.</p>
+                            <p class="text-sm text-gray-500 mt-2" data-i18n="rama_role">Ahli konstruksi dan manajemen proyek.</p>
                         </div>
                     </div>
                     <div class="team-card flex items-center space-x-6 bg-gray-50 p-8 rounded-2xl transition duration-500 cursor-pointer border border-gray-100 shadow-sm">
@@ -155,7 +157,7 @@
                         <div>
                             <h5 class="text-xl font-bold">Angga Aditya Pratama, SE.</h5>
                             <p class="text-xs uppercase tracking-widest text-abi-teal font-bold mt-1">Co-Founder & Head of Marketing</p>
-                            <p class="text-sm text-gray-500 mt-2">Strategi bisnis dan hubungan klien.</p>
+                            <p class="text-sm text-gray-500 mt-2" data-i18n="angga_role">Strategi bisnis dan hubungan klien.</p>
                         </div>
                     </div>
                 </div>
@@ -165,66 +167,30 @@
 
     <section class="py-24 bg-gray-50 border-y border-gray-100 px-6">
         <div class="container mx-auto">
-            
             <div class="text-center mb-20">
-                <span class="text-abi-teal text-xs font-bold uppercase tracking-[0.3em] mb-8 block">Proudly Part Of</span>
+                <span class="text-abi-teal text-xs font-bold uppercase tracking-[0.3em] mb-8 block" data-i18n="part_of">Proudly Part Of</span>
                 <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20">
-                    
-                    <div class="group cursor-pointer">
-                        <img src="PII.png" alt="Persatuan Insinyur Indonesia" class="org-logo h-24 md:h-28 w-auto object-contain">
-                    </div>
-
-                    <div class="group cursor-pointer">
-                        <img src="IAI.png" alt="Ikatan Arsitek Indonesia" class="org-logo h-20 md:h-24 w-auto object-contain">
-                    </div>
-
-                    <div class="group cursor-pointer">
-                        <img src="HIPMI.png" alt="Himpunan Pengusaha Muda Indonesia" class="org-logo h-20 md:h-24 w-auto object-contain">
-                    </div>
-
+                    <div class="group cursor-pointer"><img src="PII.png" class="org-logo h-24 md:h-28 w-auto object-contain"></div>
+                    <div class="group cursor-pointer"><img src="IAI.png" class="org-logo h-20 md:h-24 w-auto object-contain"></div>
+                    <div class="group cursor-pointer"><img src="HIPMI.png" class="org-logo h-20 md:h-24 w-auto object-contain"></div>
                 </div>
             </div>
-
             <div class="w-24 h-1 bg-gray-200 mx-auto rounded-full mb-16"></div>
-
             <div class="text-center">
-                <h3 class="text-2xl md:text-3xl font-light mb-4">Dipercaya oleh <span class="font-bold">Pemimpin Industri</span></h3>
-                <p class="text-gray-400 text-sm mb-12">Portofolio kolaborasi kami dengan berbagai korporasi terkemuka.</p>
-                
+                <h3 class="text-2xl md:text-3xl font-light mb-4">
+                    <span data-i18n="trusted_by">Dipercaya oleh</span> 
+                    <span class="font-bold" data-i18n="industry_leaders">Pemimpin Industri</span>
+                </h3>
+                <p class="text-gray-400 text-sm mb-12" data-i18n="portfolio_subtitle">Portofolio kolaborasi kami dengan berbagai korporasi terkemuka.</p>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-                    
-                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28 cursor-pointer">
-                        <img src="paramount.png" alt="Paramount Land" class="client-logo-img max-h-14 w-auto object-contain" onerror="this.style.display='none';this.parentNode.innerText='Paramount Land';this.parentNode.classList.add('text-gray-400','font-bold','text-sm');">
-                    </div>
-                    
-                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28 cursor-pointer">
-                        <img src="alamsutera.png" alt="Alam Sutera Sawangan" class="client-logo-img max-h-16 w-auto object-contain" onerror="this.style.display='none';this.parentNode.innerText='Alam Sutera';this.parentNode.classList.add('text-gray-400','font-bold','text-sm');">
-                    </div>
-                    
-                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28 cursor-pointer">
-                        <img src="summarecon.png" alt="Summarecon Mall Serpong" class="client-logo-img max-h-14 w-auto object-contain" onerror="this.style.display='none';this.parentNode.innerText='Summarecon';this.parentNode.classList.add('text-gray-400','font-bold','text-sm');">
-                    </div>
-                    
-                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28 cursor-pointer">
-                        <img src="protera.png" alt="PT. Protera" class="client-logo-img max-h-14 w-auto object-contain" onerror="this.style.display='none';this.parentNode.innerText='Protera';this.parentNode.classList.add('text-gray-400','font-bold','text-sm');">
-                    </div>
-                    
-                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28 cursor-pointer">
-                        <img src="primapool.png" alt="PT. Prima Pool" class="client-logo-img max-h-16 w-auto object-contain" onerror="this.style.display='none';this.parentNode.innerText='Prima Pool';this.parentNode.classList.add('text-gray-400','font-bold','text-sm');">
-                    </div>
-                    
-                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28 cursor-pointer">
-                        <img src="vistaland.png" alt="PT. Vista Land Group" class="client-logo-img max-h-16 w-auto object-contain" onerror="this.style.display='none';this.parentNode.innerText='Vista Land';this.parentNode.classList.add('text-gray-400','font-bold','text-sm');">
-                    </div>
-                    
-                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28 cursor-pointer">
-                        <img src="flame.png" alt="PT. Flame" class="client-logo-img max-h-14 w-auto object-contain" onerror="this.style.display='none';this.parentNode.innerText='PT. Flame';this.parentNode.classList.add('text-gray-400','font-bold','text-sm');">
-                    </div>
-                    
-                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28 cursor-pointer">
-                        <img src="sinarmandiri.png" alt="PT. Sinar Mandiri Sentosa" class="client-logo-img max-h-16 w-auto object-contain" onerror="this.style.display='none';this.parentNode.innerText='Sinar Mandiri';this.parentNode.classList.add('text-gray-400','font-bold','text-sm');">
-                    </div>
-
+                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28"><img src="paramount.png" class="client-logo-img max-h-14 w-auto object-contain"></div>
+                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28"><img src="alamsutera.png" class="client-logo-img max-h-16 w-auto object-contain"></div>
+                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28"><img src="summarecon.png" class="client-logo-img max-h-14 w-auto object-contain"></div>
+                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28"><img src="protera.png" class="client-logo-img max-h-14 w-auto object-contain"></div>
+                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28"><img src="primapool.png" class="client-logo-img max-h-16 w-auto object-contain"></div>
+                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28"><img src="vistaland.png" class="client-logo-img max-h-16 w-auto object-contain"></div>
+                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28"><img src="flame.png" class="client-logo-img max-h-14 w-auto object-contain"></div>
+                    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28"><img src="sinarmandiri.png" class="client-logo-img max-h-16 w-auto object-contain"></div>
                 </div>
             </div>
         </div>
@@ -234,36 +200,36 @@
         <div class="container mx-auto">
             <div class="text-center mb-16">
                 <span class="text-abi-teal text-sm font-bold uppercase tracking-[0.3em]">Our Expertise</span>
-                <h2 class="text-4xl md:text-5xl font-light mt-4">Layanan Komprehensif</h2>
+                <h2 class="text-4xl md:text-5xl font-light mt-4" data-i18n="service_title">Layanan Komprehensif</h2>
             </div>
             <div class="grid md:grid-cols-2 gap-12">
                 <div class="bg-white/5 p-12 rounded-3xl hover:bg-white/10 transition border border-white/10">
                     <i class="fas fa-drafting-compass text-5xl text-abi-teal mb-6"></i>
                     <h3 class="text-3xl font-bold mb-6">Architecture & Building</h3>
-                    <p class="text-base text-gray-300 leading-relaxed mb-6">
+                    <p class="text-base text-gray-300 leading-relaxed mb-6" data-i18n="arch_desc">
                         Layanan lengkap mulai dari Konsep Desain, Skematik, Pengembangan Desain, hingga Dokumen Kontrak dan Fase Konstruksi.
                     </p>
                     <ul class="text-sm space-y-3 text-gray-300">
-                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Desain 2D & 3D Rendering</li>
-                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Gambar Struktural Detail</li>
-                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Pengawasan Konstruksi</li>
+                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> <span data-i18n="list_design">Desain 2D & 3D Rendering</span></li>
+                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> <span data-i18n="list_struk">Gambar Struktural Detail</span></li>
+                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> <span data-i18n="list_supervisi">Pengawasan Konstruksi</span></li>
                     </ul>
                 </div>
                 <div class="bg-white/5 p-12 rounded-3xl hover:bg-white/10 transition border border-white/10">
                     <i class="fas fa-couch text-5xl text-abi-teal mb-6"></i>
                     <h3 class="text-3xl font-bold mb-6">Interior Design</h3>
-                    <p class="text-base text-gray-300 leading-relaxed mb-6">
+                    <p class="text-base text-gray-300 leading-relaxed mb-6" data-i18n="int_desc">
                         Solusi interior yang inovatif, elegan, dan personal. Kami membantu perencanaan ruang, furnitur, hingga pencahayaan.
                     </p>
                     <ul class="text-sm space-y-3 text-gray-300">
-                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Furniture & Material Selection</li>
-                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Custom Furniture Design</li>
-                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Interior Renovation</li>
+                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> <span data-i18n="list_mat">Furniture & Material Selection</span></li>
+                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> <span data-i18n="list_custom">Custom Furniture Design</span></li>
+                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> <span data-i18n="list_reno">Interior Renovation</span></li>
                     </ul>
                 </div>
             </div>
             <div class="text-center mt-16">
-                <a href="services.html" class="inline-block border border-abi-teal text-abi-teal px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-abi-teal hover:text-white transition">Lihat Selengkapnya</a>
+                <a href="services.html" class="inline-block border border-abi-teal text-abi-teal px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-abi-teal hover:text-white transition" data-i18n="see_more">Lihat Selengkapnya</a>
             </div>
         </div>
     </section>
@@ -273,26 +239,15 @@
             <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                 <div class="w-full md:w-auto">
                     <span class="text-abi-teal text-xs font-bold uppercase tracking-[0.3em]">Insight & Tips</span>
-                    <h3 class="text-3xl font-bold mt-2 text-abi-dark">Artikel Terbaru</h3>
-                </div>
-                <div class="w-full md:w-96 relative group">
-                    <input type="text" id="homeSearchBlog" onkeypress="handleEnter(event)" placeholder="Cari tips, renovasi, material..." 
-                           class="w-full bg-white border border-gray-200 rounded-full py-3 pl-6 pr-14 text-sm focus:outline-none focus:border-abi-teal transition shadow-sm">
-                    <button onclick="searchBlog()" class="absolute right-2 top-1.5 bg-abi-teal text-white w-9 h-9 rounded-full hover:bg-abi-dark transition flex items-center justify-center">
-                        <i class="fas fa-search text-xs"></i>
-                    </button>
+                    <h3 class="text-3xl font-bold mt-2 text-abi-dark" data-i18n="latest_articles">Artikel Terbaru</h3>
                 </div>
             </div>
 
             <div id="latestArticlesGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="col-span-full text-center py-10">
-                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-abi-teal"></div>
-                    <p class="mt-4 text-gray-500 text-sm">Memuat artikel terbaru...</p>
                 </div>
-            </div>
             
             <div class="text-center mt-12">
-                <a href="blog.html" class="inline-block text-sm font-bold text-abi-teal border-b border-abi-teal pb-1 hover:text-abi-dark transition">Lihat Arsip Artikel Lainnya →</a>
+                <a href="blog.html" class="inline-block text-sm font-bold text-abi-teal border-b border-abi-teal pb-1 hover:text-abi-dark transition" data-i18n="view_archive">Lihat Arsip Artikel Lainnya →</a>
             </div>
         </div>
     </section>
@@ -305,20 +260,6 @@
                     <i class="fas fa-map-marker-alt mt-1 mr-3 text-abi-teal group-hover:scale-110 transition"></i>
                     <span>Jl. Hidup Baru I No.8 Blok A49C, RT.09/RW.01,<br>Sudimara Pinang, Kec. Pinang,<br>Kota Tangerang, Banten 15145.</span>
                 </a>
-                
-                <div class="rounded-xl overflow-hidden shadow-lg border border-white/10 relative group h-40 w-full hover:border-abi-teal transition duration-300">
-                    <a href="https://maps.app.goo.gl/hRz4h8xNWNQNWpV3A" target="_blank" class="block w-full h-full">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.339472620703!2d106.69085697587784!3d-6.218883660911768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f9a466336421%3A0x705c750059c0499!2sJl.%20Hidup%20Baru%20I%20No.8%2C%20RT.004%2FRW.001%2C%20Sudimara%20Pinang%2C%20Kec.%20Pinang%2C%20Kota%20Tangerang%2C%20Banten%2015145!5e0!3m2!1sid!2sid!4v1709650000000!5m2!1sid!2sid" 
-                            width="100%" height="100%" style="border:0; pointer-events: none;" allowfullscreen="" loading="lazy">
-                        </iframe>
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition duration-300 flex items-center justify-center">
-                            <span class="opacity-0 group-hover:opacity-100 bg-abi-teal text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg transform translate-y-2 group-hover:translate-y-0 transition">
-                                <i class="fas fa-map-marked-alt mr-2"></i>Buka Maps
-                            </span>
-                        </div>
-                    </a>
-                </div>
             </div>
 
             <div>
@@ -352,7 +293,78 @@
     </footer>
     
     <script>
-        // --- 1. SLIDER LOGIC ---
+        // --- 1. LANGUAGE DATA ---
+        const translations = {
+            id: {
+                nav_home: "Home", nav_about: "About", nav_services: "Layanan", nav_packages: "Paket", nav_portfolio: "Portfolio", nav_contact: "Contact",
+                hero_title_1: "Mewujudkan Bangunan", hero_bold_1: "Impian Anda.",
+                hero_title_2: "Desain Presisi", hero_bold_2: "Konstruksi Kokoh.",
+                btn_check_package: "Lihat Paket",
+                vision_title: "Visi kami adalah menjadi perusahaan terkemuka dengan standar kualitas tertinggi.",
+                vision_desc: "ABI STUDIO hadir dengan kombinasi unik antara perencanaan detail, perhitungan presisi, dan layanan interior. Misi kami adalah memberikan pengalaman transformatif melalui keunggulan layanan desain dan konstruksi yang terintegrasi.",
+                read_more: "Baca Selengkapnya",
+                leadership_title: "Leadership Kami",
+                rama_role: "Ahli konstruksi dan manajemen proyek.",
+                angga_role: "Strategi bisnis dan hubungan klien.",
+                part_of: "Anggota Resmi Dari",
+                trusted_by: "Dipercaya oleh",
+                industry_leaders: "Pemimpin Industri",
+                portfolio_subtitle: "Portofolio kolaborasi kami dengan berbagai korporasi terkemuka.",
+                service_title: "Layanan Komprehensif",
+                arch_desc: "Layanan lengkap mulai dari Konsep Desain, Skematik, Pengembangan Desain, hingga Dokumen Kontrak dan Fase Konstruksi.",
+                list_design: "Desain 2D & 3D Rendering", list_struk: "Gambar Struktural Detail", list_supervisi: "Pengawasan Konstruksi",
+                int_desc: "Solusi interior yang inovatif, elegan, dan personal. Kami membantu perencanaan ruang, furnitur, hingga pencahayaan.",
+                list_mat: "Pemilihan Material & Furniture", list_custom: "Desain Furniture Custom", list_reno: "Renovasi Interior",
+                see_more: "Lihat Selengkapnya",
+                latest_articles: "Artikel Terbaru",
+                view_archive: "Lihat Arsip Artikel Lainnya →"
+            },
+            en: {
+                nav_home: "Home", nav_about: "About", nav_services: "Services", nav_packages: "Pricing", nav_portfolio: "Portfolio", nav_contact: "Contact Us",
+                hero_title_1: "Manifesting Your", hero_bold_1: "Dream Building.",
+                hero_title_2: "Precision Design", hero_bold_2: "Solid Construction.",
+                btn_check_package: "Check Pricing",
+                vision_title: "Our vision is to be a leading company with the highest quality standards.",
+                vision_desc: "ABI STUDIO offers a unique combination of detailed planning, precise calculation, and interior services. Our mission is to provide a transformative experience through integrated design and construction excellence.",
+                read_more: "Read More",
+                leadership_title: "Our Leadership",
+                rama_role: "Construction Expert & Project Management.",
+                angga_role: "Business Strategy & Client Relations.",
+                part_of: "Proudly Part Of",
+                trusted_by: "Trusted by",
+                industry_leaders: "Industry Leaders",
+                portfolio_subtitle: "Our collaboration portfolio with various leading corporations.",
+                service_title: "Comprehensive Services",
+                arch_desc: "Complete services from Design Concept, Schematic, Design Development, to Contract Documents and Construction Phase.",
+                list_design: "2D & 3D Rendering Design", list_struk: "Detailed Structural Drawings", list_supervisi: "Construction Supervision",
+                int_desc: "Innovative, elegant, and personalized interior solutions. We assist in space planning, furniture, to lighting.",
+                list_mat: "Material & Furniture Selection", list_custom: "Custom Furniture Design", list_reno: "Interior Renovation",
+                see_more: "See All Services",
+                latest_articles: "Latest Articles",
+                view_archive: "View Article Archive →"
+            }
+        };
+
+        function changeLanguage(lang) {
+            localStorage.setItem('selectedLang', lang); // Simpan pilihan
+            
+            // Update Text
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+
+            // Update Style Button
+            document.getElementById('btn-id').classList.toggle('active', lang === 'id');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-id').style.fontWeight = lang === 'id' ? 'bold' : 'normal';
+            document.getElementById('btn-en').style.fontWeight = lang === 'en' ? 'bold' : 'normal';
+        }
+
+        // --- 2. SLIDER LOGIC ---
         let currentSlide = 0; 
         const slides = document.querySelectorAll('.slide');
         setInterval(() => { 
@@ -361,103 +373,44 @@
             slides[currentSlide].classList.add('active'); 
         }, 6000);
         
-        // --- 2. MOBILE MENU ---
+        // --- 3. MOBILE MENU ---
         function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
 
-        // --- 3. SEARCH LOGIC ---
-        function searchBlog() {
-            const query = document.getElementById('homeSearchBlog').value;
-            if(query) {
-                window.location.href = `blog.html?search=${encodeURIComponent(query)}`;
-            }
-        }
-        function handleEnter(e) {
-            if(e.key === 'Enter') {
-                searchBlog();
-            }
-        }
-
-        // --- 4. LOAD ARTICLES (FIXED) ---
+        // --- 4. LOAD ARTICLES ---
         async function loadLatestArticles() {
             const grid = document.getElementById('latestArticlesGrid');
-            
             try {
-                console.log("Sedang mengambil data dari Firebase...");
-
-                // Gunakan orderBy dan limit untuk 3 artikel terbaru
-                // JIKA ERROR MERAH DI CONSOLE: Klik link di console browser untuk buat Index Firebase
-                const snapshot = await db.collection("articles")
-                                         .orderBy("tanggal", "desc") 
-                                         .limit(3)
-                                         .get();
-                
+                const snapshot = await db.collection("articles").orderBy("tanggal", "desc").limit(3).get();
                 if (snapshot.empty) {
-                    grid.innerHTML = `
-                        <div class="col-span-full text-center py-10 bg-gray-50 rounded-xl border border-dashed border-gray-300">
-                            <i class="far fa-newspaper text-4xl text-gray-300 mb-3"></i>
-                            <p class="text-gray-500 text-sm font-bold">Belum ada artikel.</p>
-                        </div>`;
+                    grid.innerHTML = `<div class="col-span-full text-center py-10"><p class="text-gray-500">Belum ada artikel.</p></div>`;
                     return;
                 }
-
                 let html = "";
                 snapshot.forEach(doc => {
                     const data = doc.data();
-                    
-                    // FALLBACK GAMBAR: Jika data.gambar kosong, pakai gambar default
-                    let imgUrl = data.gambar;
-                    if (!imgUrl || imgUrl.trim() === "") {
-                        imgUrl = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800'; 
-                    }
-
+                    let imgUrl = data.gambar || 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800'; 
                     html += `
-                    <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 group cursor-pointer border border-gray-100 flex flex-col h-full" 
-                             onclick="window.location.href='blog.html?id=${doc.id}'">
+                    <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 group cursor-pointer border border-gray-100 flex flex-col h-full" onclick="window.location.href='blog.html?id=${doc.id}'">
                         <div class="relative overflow-hidden h-56 flex-shrink-0 bg-gray-200">
-                            <img src="${imgUrl}" 
-                                 alt="${data.judul}"
-                                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581094794329-cd13693dd462?q=80&w=800';"
-                                 class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
-                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-abi-dark shadow-sm">
-                                ${data.kategori || 'Info'}
-                            </div>
+                            <img src="${imgUrl}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
                         </div>
                         <div class="p-8 flex flex-col flex-grow">
-                            <div class="text-xs text-gray-400 mb-3 flex items-center">
-                                <i class="far fa-calendar-alt mr-2"></i> ${data.tanggal || '-'}
-                            </div>
-                            <h4 class="text-xl font-bold mb-3 text-abi-dark group-hover:text-abi-teal transition line-clamp-2 leading-tight">
-                                ${data.judul || 'Tanpa Judul'}
-                            </h4>
-                            <p class="text-gray-500 text-sm line-clamp-3 leading-relaxed mb-6">
-                                ${data.deskripsi || 'Klik untuk membaca selengkapnya.'}
-                            </p>
-                            <div class="mt-auto">
-                                <span class="inline-block text-xs font-bold text-abi-teal uppercase tracking-widest border-b border-gray-200 pb-1 group-hover:border-abi-teal transition">Baca Selengkapnya</span>
-                            </div>
+                            <h4 class="text-xl font-bold mb-3 text-abi-dark group-hover:text-abi-teal transition line-clamp-2">${data.judul}</h4>
+                            <p class="text-gray-500 text-sm line-clamp-3 mb-4">${data.deskripsi || ''}</p>
+                            <span class="text-xs font-bold text-abi-teal uppercase mt-auto">Baca Selengkapnya</span>
                         </div>
                     </article>`;
                 });
                 grid.innerHTML = html;
-
-            } catch (error) {
-                console.error("Error Detail:", error);
-                
-                let errorMsg = "Gagal memuat artikel.";
-                // Cek error indexing
-                if (error.message && error.message.includes("The query requires an index")) {
-                    errorMsg = "System Error: Index Firebase diperlukan. Cek Console Browser (F12).";
-                }
-
-                grid.innerHTML = `
-                    <div class="col-span-full text-center py-10">
-                        <p class="text-red-500 font-bold mb-2"><i class="fas fa-exclamation-triangle mr-2"></i> ${errorMsg}</p>
-                    </div>`;
-            }
+            } catch (error) { console.error(error); }
         }
 
-        // Jalankan saat halaman siap
-        document.addEventListener('DOMContentLoaded', loadLatestArticles);
+        // Init Language & Script
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('selectedLang') || 'id';
+            changeLanguage(savedLang);
+            loadLatestArticles();
+        });
     </script>
 </body>
 </html>
