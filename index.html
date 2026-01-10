@@ -296,50 +296,66 @@
 </section>
 
 <script>
-   // FUNGSI UNTUK MENGAMBIL 3 ARTIKEL TERBARU SECARA OTOMATIS
+   <script>
+    // FUNGSI LOAD ARTIKEL (VERSI FIX & DEBUG)
     async function loadLatestArticles() {
         const grid = document.getElementById('latestArticlesGrid');
+        
         try {
-            // PERBAIKAN: Menambahkan orderBy("tanggal_input", "desc") 
-            // Pastikan di Firebase Bapak ada field 'tanggal_input' (tipe: timestamp) 
-            // Atau jika tidak ada, gunakan orderBy("judul") sementara
+            console.log("Sedang mengambil data dari Firebase..."); // Debugging
+
+            // Coba ambil data TANPA orderBy dulu untuk mengetes koneksi
+            // Jika ingin pakai urutan tanggal, pastikan Index sudah dibuat di Firebase Console
             const snapshot = await db.collection("articles")
-                                     .orderBy("tanggal", "desc") // Mengurutkan dari yang terbaru
+                                     .orderBy("tanggal", "desc") 
                                      .limit(3)
                                      .get();
             
+            console.log("Jumlah artikel ditemukan:", snapshot.size); // Debugging
+
             if (snapshot.empty) {
-                grid.innerHTML = '<p class="col-span-full text-center text-gray-400 py-10">Belum ada artikel yang dipublikasikan.</p>';
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-10 bg-gray-50 rounded-xl border border-dashed border-gray-300">
+                        <i class="far fa-newspaper text-4xl text-gray-300 mb-3"></i>
+                        <p class="text-gray-500 text-sm font-bold">Belum ada artikel yang dipublikasikan.</p>
+                        <p class="text-xs text-gray-400 mt-1">Silakan input data di database Firebase (Collection: 'articles')</p>
+                    </div>`;
                 return;
             }
 
             let html = "";
             snapshot.forEach(doc => {
                 const data = doc.data();
-                
-                // Proteksi gambar rusak
-                const safeImg = data.gambar || 'https://images.unsplash.com/photo-1581094794329-cd13693dd462?q=80&w=800';
-                
+                console.log("Data Artikel:", data); // Cek di Console apakah field 'gambar' ada isinya?
+
+                // Fallback Gambar yang Lebih Kuat
+                // Jika data.gambar kosong atau undefined, pakai gambar default
+                let imgUrl = data.gambar;
+                if (!imgUrl || imgUrl.trim() === "") {
+                    imgUrl = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800'; 
+                }
+
                 html += `
                 <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 group cursor-pointer border border-gray-100 flex flex-col h-full" 
                          onclick="window.location.href='blog.html?id=${doc.id}'">
-                    <div class="relative overflow-hidden h-56 flex-shrink-0">
-                        <img src="${safeImg}" 
-                             onerror="this.src='https://images.unsplash.com/photo-1581094794329-cd13693dd462?q=80&w=800'"
+                    <div class="relative overflow-hidden h-56 flex-shrink-0 bg-gray-200">
+                        <img src="${imgUrl}" 
+                             alt="${data.judul}"
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581094794329-cd13693dd462?q=80&w=800';"
                              class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
                         <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-abi-dark shadow-sm">
-                            ${data.kategori || 'Info Konstruksi'}
+                            ${data.kategori || 'Info'}
                         </div>
                     </div>
                     <div class="p-8 flex flex-col flex-grow">
                         <div class="text-xs text-gray-400 mb-3 flex items-center">
-                            <i class="far fa-calendar-alt mr-2"></i> ${data.tanggal_display || data.tanggal || 'Terbaru'}
+                            <i class="far fa-calendar-alt mr-2"></i> ${data.tanggal || '-'}
                         </div>
                         <h4 class="text-xl font-bold mb-3 text-abi-dark group-hover:text-abi-teal transition line-clamp-2 leading-tight">
-                            ${data.judul}
+                            ${data.judul || 'Tanpa Judul'}
                         </h4>
                         <p class="text-gray-500 text-sm line-clamp-3 leading-relaxed mb-6">
-                            ${data.deskripsi || 'Klik untuk mempelajari lebih lanjut tentang proyek dan tips arsitektur ini.'}
+                            ${data.deskripsi || 'Tidak ada deskripsi singkat.'}
                         </p>
                         <div class="mt-auto">
                             <span class="inline-block text-xs font-bold text-abi-teal uppercase tracking-widest border-b border-gray-200 pb-1 group-hover:border-abi-teal transition">Baca Selengkapnya</span>
@@ -348,18 +364,27 @@
                 </article>`;
             });
             grid.innerHTML = html;
+
         } catch (error) {
-            console.error("Error loading articles:", error);
-            // Jika error karena index Firebase belum dibuat, tampilkan pesan bantuan
+            console.error("Error Detail:", error); // Lihat error lengkap di Console
+            
+            let errorMsg = "Gagal memuat artikel.";
+            
+            // Deteksi Error Indexing
+            if (error.message.includes("The query requires an index")) {
+                errorMsg = "System Error: Index Firebase belum dibuat. Cek Console Browser (F12) untuk link perbaikan.";
+            } else if (error.code === 'permission-denied') {
+                errorMsg = "Akses Ditolak: Cek 'Rules' di Firebase Console.";
+            }
+
             grid.innerHTML = `
                 <div class="col-span-full text-center py-10">
-                    <p class="text-gray-400 text-sm">Gagal memuat artikel secara otomatis.</p>
-                    <p class="text-[10px] text-gray-300 mt-2">Pastikan koleksi 'articles' di Firebase sudah berisi data.</p>
+                    <p class="text-red-500 font-bold mb-2"><i class="fas fa-exclamation-triangle mr-2"></i>${errorMsg}</p>
+                    <p class="text-xs text-gray-400 bg-gray-100 p-2 rounded inline-block">${error.message}</p>
                 </div>`;
         }
     }
 
-    // Jalankan fungsi saat halaman dimuat
     document.addEventListener('DOMContentLoaded', loadLatestArticles);
 </script>
 </section>
