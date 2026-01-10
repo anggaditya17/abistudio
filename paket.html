@@ -194,43 +194,47 @@
                             <input type="number" id="area" placeholder="150" class="w-full border-b border-gray-200 py-2 text-sm focus:outline-none focus:border-abi-teal transition bg-transparent">
                         </div>
                         <div>
-                            <label class="text-[10px] font-bold text-gray-400 uppercase">Kategori</label>
-                            <select id="type" class="w-full border-b border-gray-200 py-2 text-sm focus:outline-none focus:border-abi-teal transition bg-transparent text-gray-600">
-                                <option value="" disabled selected>Pilih Layanan</option>
-                                <optgroup label="Layanan Desain">
-                                    <option value="Desain Arsitektur">Desain Arsitektur</option>
-                                    <option value="Desain Interior">Desain Interior</option>
-                                    <option value="Desain Struktur">Desain Struktur</option>
-                                    <option value="Desain Landscape">Desain Landscape</option>
-                                    <option value="Desain MEP">Desain MEP</option>
-                                </optgroup>
-                                <optgroup label="Layanan Kontraktor">
-                                    <option value="Pekerjaan Sipil">Pekerjaan Sipil (Nol)</option>
-                                    <option value="Struktur Beton/Baja">Struktur Beton & Baja</option>
-                                    <option value="Renovasi Bangunan">Renovasi Bangunan</option>
-                                    <option value="Fit Out Interior">Fit Out Interior</option>
-                                    <option value="Pekerjaan Finishing">Pekerjaan Finishing</option>
-                                    <option value="Maintenance">Maintenance</option>
-                                </optgroup>
-                                <optgroup label="Layanan Konsultan">
-                                    <option value="Legal & Perizinan">Legal & Perizinan</option>
-                                    <option value="Supervisi Proyek">Supervisi Proyek</option>
-                                    <option value="Manajemen Proyek">Manajemen Proyek</option>
-                                    <option value="Tenaga Ahli">Tenaga Ahli</option>
-                                    <option value="Studi Kelayakan & RAB">Studi Kelayakan & RAB</option>
-                                    <option value="Audit Teknis">Audit Teknis</option>
-                                </optgroup>
-                            </select>
+                            <label class="text-[10px] font-bold text-gray-400 uppercase">Lokasi Proyek</label>
+                            <input type="text" id="location" placeholder="Kecamatan, Kota" class="w-full border-b border-gray-200 py-2 text-sm focus:outline-none focus:border-abi-teal transition bg-transparent">
                         </div>
                     </div>
 
                     <div>
-                        <label class="text-[10px] font-bold text-gray-400 uppercase">Lokasi Proyek</label>
-                        <input type="text" id="location" placeholder="Kecamatan, Kota" class="w-full border-b border-gray-200 py-2 text-sm focus:outline-none focus:border-abi-teal transition bg-transparent">
+                        <label class="text-[10px] font-bold text-gray-400 uppercase">Kategori Layanan</label>
+                        <select id="type" onchange="updateSubOptions()" class="w-full border-b border-gray-200 py-2 text-sm focus:outline-none focus:border-abi-teal transition bg-transparent text-gray-600 font-bold">
+                            <option value="" disabled selected>Pilih Layanan Utama</option>
+                            <optgroup label="Layanan Desain">
+                                <option value="Desain Arsitektur">Desain Arsitektur</option>
+                                <option value="Desain Interior">Desain Interior</option>
+                                <option value="Desain Struktur">Desain Struktur</option>
+                                <option value="Desain Landscape">Desain Landscape</option>
+                                <option value="Desain MEP">Desain MEP</option>
+                            </optgroup>
+                            <optgroup label="Layanan Kontraktor">
+                                <option value="Pekerjaan Sipil">Pekerjaan Sipil & Bangunan</option>
+                                <option value="Struktur Beton/Baja">Struktur Beton & Baja</option>
+                                <option value="Renovasi Bangunan">Renovasi & Rehabilitasi</option>
+                                <option value="Fit Out Interior">Fit Out Interior</option>
+                                <option value="Pekerjaan Finishing">Arsitektural & Finishing</option>
+                                <option value="Maintenance">Pemeliharaan & Perawatan</option>
+                            </optgroup>
+                            <optgroup label="Layanan Konsultan">
+                                <option value="Legal & Perizinan">Konsultan Perizinan</option>
+                                <option value="Supervisi Proyek">Supervisi & Manajemen Proyek</option>
+                                <option value="Studi Kelayakan & RAB">Studi Kelayakan & RAB</option>
+                                <option value="Audit Teknis">Audit Teknis Bangunan</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div id="subOptionContainer" class="hidden animate-up">
+                        <label class="text-[10px] font-bold text-abi-teal uppercase">Detail Paket / Tipe</label>
+                        <select id="subType" class="w-full border-b border-abi-teal py-2 text-sm focus:outline-none bg-abi-teal/5 text-gray-800 rounded px-2 mt-1">
+                            </select>
                     </div>
 
                     <div>
-                        <label class="text-[10px] font-bold text-gray-400 uppercase">Rencana Bangun</label>
+                        <label class="text-[10px] font-bold text-gray-400 uppercase mt-2 block">Rencana Bangun</label>
                         <input type="text" id="date" placeholder="Contoh: Bulan Depan" class="w-full border-b border-gray-200 py-2 text-sm focus:outline-none focus:border-abi-teal transition bg-transparent">
                     </div>
 
@@ -241,44 +245,174 @@
     </div>
 
     <script>
-        // === 1. LOGIC UTAMA SAAT LOAD PAGE ===
+        // DATA OPSI DARI RAMA
+        const serviceOptions = {
+            "Desain Arsitektur": [
+                "Paket Basic",
+                "Paket Standard",
+                "Paket Premium"
+            ],
+            "Desain Interior": [
+                "Paket Basic (3D View) - 25rb/m²",
+                "Paket Advance (3D + DED) - 50rb/m²"
+            ],
+            "Desain Struktur": [
+                "Gedung (8.5rb - 15rb/m²)",
+                "Baja (8.5rb - 15rb/m²)",
+                "Pabrik (8.5rb - 15rb/m²)",
+                "Dermaga (8.5rb - 15rb/m²)",
+                "Jalan (150rb/m¹)",
+                "Jembatan (150rb/m¹)"
+            ],
+            "Desain Landscape": [
+                "Type Hunian - 15rb/m²",
+                "Type Komersil - 15rb/m²"
+            ],
+            "Desain MEP": [
+                "Elektrikal - 15rb/m²",
+                "Plumbing - 15rb/m²"
+            ],
+            "Pekerjaan Sipil": [
+                "Rumah Tinggal",
+                "Ruko / Kantor",
+                "Sarana Pendidikan",
+                "Sarana Ibadah",
+                "Gedung Bertingkat"
+            ],
+            "Struktur Beton/Baja": [
+                "Penambahan Ruang / Lantai",
+                "Pergudangan",
+                "Mezzanine",
+                "Penguatan Struktur",
+                "Struktur Tangga / Kanopi Baja"
+            ],
+            "Renovasi Bangunan": [
+                "Perbaikan Atap / Dak",
+                "Perbaikan Dapur",
+                "Perbaikan Plafon / Dinding",
+                "Renovasi Kamar Mandi",
+                "Perbaikan Struktur Ringan"
+            ],
+            "Fit Out Interior": [
+                "Ruang Hunian",
+                "Komersial / Toko",
+                "Perkantoran",
+                "Cafe",
+                "Klinik"
+            ],
+            "Pekerjaan Finishing": [
+                "Elemen Eksterior (Kanopi, Pagar, Kolam)",
+                "Elemen Interior (Pintu, Jendela, Studio)"
+            ],
+            "Maintenance": [
+                "Pengecatan Ulang",
+                "Perbaikan Kebocoran",
+                "Perawatan Atap",
+                "Sanitary",
+                "Perawatan Berkala Gedung"
+            ],
+            "Legal & Perizinan": [
+                "PBG (Persetujuan Bangunan Gedung)",
+                "SLF (Sertifikat Laik Fungsi)",
+                "IMB Lama ke PBG",
+                "Pendampingan Perizinan"
+            ],
+            "Supervisi Proyek": [
+                "Kontrol Mutu, Waktu & Biaya",
+                "Laporan Berkala (Harian/Mingguan/Bulanan)"
+            ],
+            "Studi Kelayakan & RAB": [
+                "Paket Sipil - 10rb/m²",
+                "Paket Interior - 10rb/m²"
+            ],
+            "Audit Teknis": [
+                "Audit Struktur",
+                "Audit Fungsi Bangunan"
+            ]
+        };
+
+        // FUNGSI UPDATE SUB-OPSI
+        function updateSubOptions() {
+            const mainType = document.getElementById('type').value;
+            const subSelect = document.getElementById('subType');
+            const subContainer = document.getElementById('subOptionContainer');
+
+            // Kosongkan opsi lama
+            subSelect.innerHTML = "";
+
+            if (serviceOptions[mainType]) {
+                // Munculkan container
+                subContainer.classList.remove('hidden');
+                
+                // Tambah opsi default
+                const defaultOpt = document.createElement('option');
+                defaultOpt.text = "-- Pilih Detail Paket --";
+                defaultOpt.disabled = true;
+                defaultOpt.selected = true;
+                subSelect.add(defaultOpt);
+
+                // Loop data dari Rama
+                serviceOptions[mainType].forEach(opt => {
+                    const option = document.createElement('option');
+                    option.value = opt;
+                    option.text = opt;
+                    subSelect.add(option);
+                });
+            } else {
+                subContainer.classList.add('hidden');
+            }
+        }
+
+        // === LOGIC PAGE LOAD ===
         window.onload = function() {
             updateTickerDisplay(); 
             const urlParams = new URLSearchParams(window.location.search);
             const serviceType = urlParams.get('service');
             
             if(serviceType) {
-                let customTitle = "Konsultasi Layanan", 
-                    customImg = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c", 
-                    autoSelectType = "Desain Arsitektur"; // Default fallback
+                // Auto-fill logic based on URL params (Sama seperti sebelumnya)
+                // Saya sederhanakan mappingnya untuk brevity, tapi tetap jalan
+                let autoSelectType = "";
+                let customTitle = "Konsultasi Layanan";
+                let customImg = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c";
 
-                // Mapping URL Parameter ke Dropdown Value & Gambar
-                if(serviceType === 'arsitek') { customTitle = "Konsultasi Arsitek"; customImg = "https://images.unsplash.com/photo-1512917774080-9991f1c4c750"; autoSelectType = "Desain Arsitektur"; } 
-                else if(serviceType === 'interior') { customTitle = "Konsultasi Interior"; customImg = "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6"; autoSelectType = "Desain Interior"; } 
-                else if(serviceType === 'struktur') { customTitle = "Konsultasi Struktur"; customImg = "https://images.unsplash.com/photo-1531834685032-c34bf0d84c7c"; autoSelectType = "Desain Struktur"; } 
-                else if(serviceType === 'landscape') { customTitle = "Desain Landscape"; customImg = "https://images.unsplash.com/photo-1558904541-efa843a96f01"; autoSelectType = "Desain Landscape"; } 
-                else if(serviceType === 'mep') { customTitle = "Desain MEP"; customImg = "https://images.unsplash.com/photo-1621905251189-08b45d6a269e"; autoSelectType = "Desain MEP"; } 
-                
-                else if(serviceType === 'kontraktor_sipil') { customTitle = "Kontraktor Sipil"; customImg = "https://images.unsplash.com/photo-1632759132029-2342df220551"; autoSelectType = "Pekerjaan Sipil"; } 
-                else if(serviceType === 'kontraktor_baja') { customTitle = "Struktur Beton & Baja"; customImg = "https://images.unsplash.com/photo-1565008447742-97f6f38c985c"; autoSelectType = "Struktur Beton/Baja"; } 
-                else if(serviceType === 'renovasi') { customTitle = "Renovasi Bangunan"; customImg = "https://images.unsplash.com/photo-1581094794329-cd13693dd462"; autoSelectType = "Renovasi Bangunan"; } 
-                else if(serviceType === 'fitout') { customTitle = "Fit Out Interior"; customImg = "https://images.unsplash.com/photo-1497366216548-37526070297c"; autoSelectType = "Fit Out Interior"; } 
-                else if(serviceType === 'finishing') { customTitle = "Pekerjaan Finishing"; customImg = "https://images.unsplash.com/photo-1620626012053-93f537236872"; autoSelectType = "Pekerjaan Finishing"; } 
-                else if(serviceType === 'maintenance') { customTitle = "Maintenance"; customImg = "https://images.unsplash.com/photo-1584622650111-993a426fbf0a"; autoSelectType = "Maintenance"; } 
-                
-                else if(serviceType === 'legal') { customTitle = "Legal & Perizinan"; customImg = "https://images.unsplash.com/photo-1554224154-260327c00c4b"; autoSelectType = "Legal & Perizinan"; } 
-                else if(serviceType === 'supervisi') { customTitle = "Supervisi Proyek"; customImg = "https://images.unsplash.com/photo-1531816458010-fb7685eec548"; autoSelectType = "Supervisi Proyek"; } 
-                else if(serviceType === 'manajemen') { customTitle = "Manajemen Proyek"; customImg = "https://images.unsplash.com/photo-1542744173-8e7e53415bb0"; autoSelectType = "Manajemen Proyek"; } 
-                else if(serviceType === 'tenaga_ahli') { customTitle = "Tenaga Ahli"; customImg = "https://images.unsplash.com/photo-1556761175-5973dc0f32e7"; autoSelectType = "Tenaga Ahli"; } 
-                else if(serviceType === 'rab') { customTitle = "Studi Kelayakan & RAB"; customImg = "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40"; autoSelectType = "Studi Kelayakan & RAB"; } 
-                else if(serviceType === 'audit') { customTitle = "Audit Teknis"; customImg = "https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5"; autoSelectType = "Audit Teknis"; }
+                const map = {
+                    'arsitek': ['Desain Arsitektur', 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750'],
+                    'interior': ['Desain Interior', 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6'],
+                    'struktur': ['Desain Struktur', 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c7c'],
+                    'landscape': ['Desain Landscape', 'https://images.unsplash.com/photo-1558904541-efa843a96f01'],
+                    'mep': ['Desain MEP', 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e'],
+                    'kontraktor_sipil': ['Pekerjaan Sipil', 'https://images.unsplash.com/photo-1632759132029-2342df220551'],
+                    'kontraktor_baja': ['Struktur Beton/Baja', 'https://images.unsplash.com/photo-1565008447742-97f6f38c985c'],
+                    'renovasi': ['Renovasi Bangunan', 'https://images.unsplash.com/photo-1581094794329-cd13693dd462'],
+                    'fitout': ['Fit Out Interior', 'https://images.unsplash.com/photo-1497366216548-37526070297c'],
+                    'finishing': ['Pekerjaan Finishing', 'https://images.unsplash.com/photo-1620626012053-93f537236872'],
+                    'maintenance': ['Maintenance', 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a'],
+                    'legal': ['Legal & Perizinan', 'https://images.unsplash.com/photo-1554224154-260327c00c4b'],
+                    'supervisi': ['Supervisi Proyek', 'https://images.unsplash.com/photo-1531816458010-fb7685eec548'],
+                    'rab': ['Studi Kelayakan & RAB', 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40'],
+                    'audit': ['Audit Teknis', 'https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5']
+                };
+
+                if(map[serviceType]) {
+                    autoSelectType = map[serviceType][0];
+                    customTitle = autoSelectType;
+                    customImg = map[serviceType][1];
+                }
 
                 openOrder(customTitle, customImg);
-                setTimeout(() => { document.getElementById('type').value = autoSelectType; }, 100);
+                
+                // Set timeout agar DOM render dulu baru value di-set
+                setTimeout(() => { 
+                    const typeSelect = document.getElementById('type');
+                    typeSelect.value = autoSelectType; 
+                    // Trigger manual change event agar sub-opsi muncul
+                    typeSelect.dispatchEvent(new Event('change'));
+                }, 200);
             }
         }
 
-        // === 2. LOGIC TICKER (RUNNING TEXT) ===
+        // === TICKER LOGIC ===
         const fakeBuyers = ["YUNI ZAIDAH", "MUHAMMAD FAIZAL", "SITI AMINAH", "CV. BERKAH JAYA", "RUDI HARTONO", "ANDI PRATAMA", "DEWI SARTIKA", "PT. BANGUN INDAH"];
         function maskName(name) { return name.length <= 4 ? name : `${name.slice(0, 3)}********${name.slice(-3)}`; }
         
@@ -293,7 +427,7 @@
             container.innerHTML = htmlContent + htmlContent;
         }
 
-        // === 3. LOGIC MODAL & MENU ===
+        // === MODAL & MENU ===
         function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
         
         let selectedPkg = "";
@@ -313,17 +447,20 @@
 
         window.onclick = function(e) { if(e.target == document.getElementById('orderModal')) closeOrder(); }
 
-        // === 4. LOGIC WHATSAPP & DATABASE ===
+        // === WHATSAPP SEND ===
         function sendWhatsApp() {
             const name = document.getElementById('clientName').value.toUpperCase();
             const phone = document.getElementById('clientPhone').value; 
             const area = document.getElementById('area').value; 
-            const type = document.getElementById('type').value; 
             const location = document.getElementById('location').value; 
             const date = document.getElementById('date').value;
             
-            if(!name || !phone || !area || !location || !date) { 
-                alert("Mohon lengkapi semua data proyek (Termasuk No. WhatsApp)."); 
+            // Ambil value dari dropdown utama dan sub-dropdown
+            const type = document.getElementById('type').value; 
+            const subType = document.getElementById('subType').value;
+
+            if(!name || !phone || !area || !location || !type) { 
+                alert("Mohon lengkapi data (Nama, WA, Luas, Lokasi, Layanan)."); 
                 return; 
             }
             
@@ -332,13 +469,13 @@
             btn.disabled = true;
 
             const msg = `Halo ABI Studio,%0A` + 
-                        `Saya tertarik dengan layanan:%0A%0A` + 
-                        `📝 *${selectedPkg}*%0A` + 
+                        `Saya tertarik dengan layanan:%0A` + 
+                        `📝 *${type}*%0A` + 
+                        `👉 *${subType}*%0A` + 
                         `--------------------------------%0A` +
                         `👤 Nama : ${name}%0A` + 
                         `📱 No. WA : ${phone}%0A` +  
                         `📐 Luas : ${area} m²%0A` + 
-                        `🏡 Kategori : ${type}%0A` + 
                         `📍 Lokasi : ${location}%0A` + 
                         `📅 Rencana : ${date}%0A` + 
                         `--------------------------------%0A` +
@@ -349,9 +486,9 @@
             db.collection("leads").add({
                 nama_klien: name,
                 no_hp: phone,
-                paket_dipilih: selectedPkg,
+                layanan_utama: type,
+                detail_paket: subType,
                 luas_bangunan: area,
-                jenis_bangunan: type,
                 lokasi: location,
                 rencana_bangun: date,
                 waktu_input: new Date()
